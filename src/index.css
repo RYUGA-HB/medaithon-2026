@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-bg-dark: #0a0a0f;
+  --color-bg-surface: #1a1a2e;
+  --color-crimson: #dc2626;
+  --color-gold: #f59e0b;
+  --color-fire: #ff6b35;
+  --color-text-primary: #f0e6d3;
+  --color-text-secondary: #a8a29e;
+  --font-bebas: 'Bebas Neue', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #dc2626 #0a0a0f;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dc2626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
+}
+
+::selection {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+.glass-card {
+  background: rgba(26, 26, 46, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(240, 230, 211, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(220, 38, 38, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(220, 38, 38, 0.15);
+}
+
+@layer utilities {
+  .flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .abs-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .general-title {
+    font-family: var(--font-bebas);
+    text-transform: uppercase;
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+
+  @media (min-width: 640px) {
+    .general-title {
+      font-size: 4rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .general-title {
+      font-size: 6rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .general-title {
+      font-size: 8rem;
+    }
+  }
+}
+
+@layer components {
+  .hero-container {
+    position: relative;
+    background-color: var(--color-bg-dark);
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .hero-title {
+    color: var(--color-crimson);
+    font-family: var(--font-bebas);
+    text-transform: uppercase;
+  }
+
+  .hero-text-scroll {
+    transform: rotate(-12deg);
+    border: 1px solid var(--color-crimson);
+  }
+
+  .hero-subtitle {
+    background-color: var(--color-crimson);
+  }
+
+  .hero-description {
+    color: var(--color-text-secondary);
+  }
+
+  .hero-button {
+    background-color: var(--color-crimson);
+    color: var(--color-text-primary);
+    border-radius: 9999px;
+  }
+
+  .about-content {
+    background-color: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    min-height: 100dvh;
+  }
+
+  .about-text-scroll {
+    transform: rotate(12deg);
+    background-color: var(--color-gold);
+  }
+
+  .tracks-section {
+    min-height: 100dvh;
+    background-color: var(--color-bg-dark);
+  }
+
+  .tracks-text-scroll {
+    transform: rotate(-6deg);
+  }
+
+  .slider-wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .track-cards {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .prizes-section {
+    min-height: 100dvh;
+    background-color: var(--color-bg-dark);
+    overflow: hidden;
+  }
+
+  .judges-section {
+    background-color: var(--color-bg-dark);
+  }
+
+  .sponsors-section {
+    background-color: var(--color-bg-surface);
+  }
+
+  .faq-section {
+    background-color: var(--color-bg-dark);
+  }
+
+  .footer-section {
+    background-color: var(--color-bg-surface);
+    overflow: hidden;
+  }
+
+  .copyright-box {
+    padding: 1rem;
+    text-align: center;
+  }
+}
