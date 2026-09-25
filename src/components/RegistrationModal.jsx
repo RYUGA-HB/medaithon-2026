@@ -309,8 +309,10 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
 
         {status === 'success' ? (
           <div className="text-center py-12 space-y-4 animate-in fade-in duration-300">
-            <div className="w-16 h-16 bg-emerald-500/20 border border-emerald-500 rounded-full flex items-center justify-center mx-auto text-3xl text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-              ✓
+            <div className="w-16 h-16 bg-emerald-500/20 border border-emerald-500 rounded-full flex items-center justify-center mx-auto shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+              <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+              </svg>
             </div>
             <h3 className="text-3xl font-['Bebas_Neue'] text-emerald-400 tracking-wide m-0">REGISTRATION SUCCESSFUL!</h3>
             <div className="inline-block bg-emerald-950/60 border border-emerald-500/40 px-4 py-2 rounded-xl">
@@ -321,8 +323,11 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
               Your team <strong>{lastSubmission?.teamName}</strong> has been registered for MEDAITHON 2026. Keep your Registration ID for future reference.
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-4">
-              <button onClick={downloadReceipt} type="button" className="bg-[#f59e0b] hover:bg-[#d97706] text-[#0a0a0f] font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider cursor-pointer shadow-[0_4px_15px_rgba(245,158,11,0.3)] transition-all">
-                📥 Download Confirmation Receipt
+              <button onClick={downloadReceipt} type="button" className="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-[#0a0a0f] font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider cursor-pointer shadow-[0_4px_15px_rgba(245,158,11,0.3)] transition-all">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                <span>Download Confirmation Receipt</span>
               </button>
               <button onClick={onClose} type="button" className="bg-white/10 border border-white/20 hover:bg-white/20 text-white font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider cursor-pointer transition-all">
                 Close Window
@@ -338,7 +343,11 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                 {/* Abstract PPT Template Callout */}
                 <div className="bg-gradient-to-r from-[#1a1a2e] to-[#12121d] border border-[#f59e0b]/40 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-md">
                   <div className="flex items-center gap-3">
-                    <span className="text-3xl flex-shrink-0">📑</span>
+                    <div className="w-10 h-10 rounded-xl bg-[#f59e0b]/10 border border-[#f59e0b]/30 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                    </div>
                     <div>
                       <div className="flex items-center gap-2">
                         <h4 className="font-bold text-[#f59e0b] text-sm m-0">Solution Abstract Template v2.0 (.pptx)</h4>
@@ -393,17 +402,26 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                         }`}
                       />
                       {formData.abstractDriveLink.trim() && !isGoogleDriveUrl(formData.abstractDriveLink) && (
-                        <p className="text-xs text-red-400 mt-1 font-semibold flex items-center gap-1">
-                          <span>❌</span> Invalid URL. Must be a valid Google Drive link (e.g., https://drive.google.com/...).
+                        <p className="text-xs text-red-400 mt-1.5 font-semibold flex items-center gap-1.5">
+                          <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span>Invalid URL. Must be a valid Google Drive link (e.g., https://drive.google.com/...).</span>
                         </p>
                       )}
                       {formData.abstractDriveLink.trim() && isGoogleDriveUrl(formData.abstractDriveLink) && (
-                        <p className="text-xs text-emerald-400 mt-1 font-semibold flex items-center gap-1">
-                          <span>✓</span> Valid Google Drive link recognized.
+                        <p className="text-xs text-emerald-400 mt-1.5 font-semibold flex items-center gap-1.5">
+                          <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span>Valid Google Drive link recognized.</span>
                         </p>
                       )}
-                      <p className="text-xs text-amber-400/90 mt-2 leading-relaxed bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-lg">
-                        ⚠️ Please upload your completed abstract (prepared using the downloaded PPT template) to Google Drive and paste the link here. Set link sharing to <strong>"Anyone with the link can view"</strong>.
+                      <p className="text-xs text-amber-400/90 mt-2 leading-relaxed bg-amber-500/10 border border-amber-500/30 p-2.5 rounded-lg flex items-start gap-2">
+                        <svg className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <span>Please upload your completed abstract (prepared using the downloaded PPT template) to Google Drive and paste the link here. Set link sharing to <strong>"Anyone with the link can view"</strong>.</span>
                       </p>
                     </div>
                   </div>
@@ -538,8 +556,11 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                     <button type="button" onClick={addMember} className="bg-white/10 border border-white/20 text-xs px-3 py-1.5 rounded-lg hover:bg-white/20 font-bold cursor-pointer">+ Add Member</button>
                   )}
                 </div>
-                <p className="text-xs text-[#a8a29e] -mt-3 bg-white/5 p-3 rounded-xl border border-white/10">
-                  ℹ️ <strong>Mandatory Rule:</strong> Teams must have 2 to 4 members. Ensure at least one female member is present across your total team roster.
+                <p className="text-xs text-[#a8a29e] -mt-3 bg-white/5 p-3 rounded-xl border border-white/10 flex items-center gap-2">
+                  <svg className="w-4 h-4 text-[#f59e0b] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span><strong>Mandatory Rule:</strong> Teams must have 2 to 4 members. Ensure at least one female member is present across your total team roster.</span>
                 </p>
 
                 {formData.teamMembers.map((member, index) => (

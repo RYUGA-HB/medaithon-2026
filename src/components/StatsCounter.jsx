@@ -6,7 +6,12 @@ import { stats } from '../constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const STAT_ICONS = ['⏱️', '👥', '🏆', '🧪'];
+const STAT_ICONS = [
+  <svg key="0" className="w-7 h-7 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+  <svg key="1" className="w-7 h-7 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5 5 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
+  <svg key="2" className="w-7 h-7 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2 0h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>,
+  <svg key="3" className="w-7 h-7 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.594 15.12a2 2 0 00-1.022.547l-1.42 1.42A2 2 0 004.566 20.5h14.868a2 2 0 001.414-3.414l-1.42-1.42z" /></svg>
+];
 
 const StatsCounter = ({ className = '' }) => {
   const containerRef = useRef(null);
@@ -46,8 +51,8 @@ const StatsCounter = ({ className = '' }) => {
             {/* Ambient accent line */}
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#dc2626] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             
-            <span className="text-2xl sm:text-3xl mb-2 opacity-80 group-hover:scale-110 transition-transform">
-              {STAT_ICONS[index] || '✨'}
+            <span className="mb-2 opacity-80 group-hover:scale-110 transition-transform flex items-center justify-center">
+              {STAT_ICONS[index]}
             </span>
 
             <div className="flex items-baseline justify-center">
