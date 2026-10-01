@@ -16,7 +16,7 @@ const AboutSection = () => {
 
     // First line — word-by-word color fill
     gsap.to(firstMsgSplit.words, {
-      color: '#f0e6d3',
+      color: '#ffffff',
       ease: 'power1.in',
       stagger: 1,
       scrollTrigger: {
@@ -29,7 +29,7 @@ const AboutSection = () => {
 
     // Second line — word-by-word color fill
     gsap.to(secondMsgSplit.words, {
-      color: '#f0e6d3',
+      color: '#ffffff',
       ease: 'power1.in',
       stagger: 1,
       scrollTrigger: {
@@ -103,12 +103,12 @@ const AboutSection = () => {
   })
 
   return (
-    <section className="about-content relative overflow-hidden" style={{ backgroundColor: '#1a1a2e', color: '#f0e6d3' }}>
+    <section id="about" className="about-content relative overflow-hidden bg-transparent text-white">
       {/* Ambient orb */}
       <div
-        className="about-bg-orb absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full pointer-events-none opacity-20"
+        className="about-bg-orb absolute -top-40 -left-40 w-[500px] h-[500px] rounded-full pointer-events-none opacity-15"
         style={{
-          background: 'radial-gradient(circle, #dc2626, transparent 40%, #f59e0b 80%, transparent 100%)',
+          background: 'radial-gradient(circle, rgba(255,255,255,0.2), transparent 70%)',
           filter: 'blur(80px)',
         }}
       />
@@ -117,7 +117,7 @@ const AboutSection = () => {
         <div className="w-full h-full max-w-5xl">
           {/* Main message block */}
           <div className="about-wrapper text-center md:text-left flex flex-col items-center justify-center space-y-4">
-            <h1 className="first-message text-4xl md:text-6xl lg:text-7xl font-bebas font-bold uppercase tracking-wider text-center max-w-4xl" style={{ color: 'rgba(240,230,211,0.06)', fontFamily: "'Bebas Neue', sans-serif", lineHeight: 1.1 }}>
+            <h1 className="first-message text-4xl md:text-6xl lg:text-7xl font-bebas font-bold uppercase tracking-wider text-center max-w-4xl" style={{ color: 'rgba(255,255,255,0.1)', fontFamily: "'Bebas Neue', sans-serif", lineHeight: 1.1 }}>
               50 hours of relentless innovation where warriors of code
             </h1>
 
@@ -126,36 +126,36 @@ const AboutSection = () => {
               style={{ clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)', position: 'relative', overflow: 'hidden', transform: 'rotate(-3deg)' }}
               className="about-text-scroll my-6"
             >
-              <div className="bg-[#f59e0b] md:py-4 py-3 px-8 relative border-2 border-[#f0e6d3]/20 shadow-xl">
+              <div className="bg-white text-black md:py-4 py-3 px-8 relative border-2 border-white/40 shadow-2xl rounded-lg">
                 <div
                   className="about-badge-shimmer absolute inset-0 z-10 pointer-events-none"
                   style={{
                     background:
-                      'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%)',
+                      'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.6) 50%, transparent 70%)',
                   }}
                 />
-                <h2 className="text-[#0a0a0f] text-3xl md:text-5xl font-bold uppercase tracking-widest relative z-20 m-0 leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
+                <h2 className="text-black text-3xl md:text-5xl font-bold uppercase tracking-widest relative z-20 m-0 leading-none" style={{ fontFamily: "'Bebas Neue', sans-serif" }}>
                   FORGE THE FUTURE
                 </h2>
               </div>
             </div>
 
-            <h1 className="second-message text-4xl md:text-6xl lg:text-7xl font-bebas font-bold uppercase tracking-wider text-center max-w-4xl" style={{ color: 'rgba(240,230,211,0.06)', fontFamily: "'Bebas Neue', sans-serif", lineHeight: 1.1 }}>
+            <h1 className="second-message text-4xl md:text-6xl lg:text-7xl font-bebas font-bold uppercase tracking-wider text-center max-w-4xl" style={{ color: 'rgba(255,255,255,0.1)', fontFamily: "'Bebas Neue', sans-serif", lineHeight: 1.1 }}>
               of medicine one line of code at a time
             </h1>
           </div>
 
           {/* Divider */}
           <div
-            className="about-divider w-48 h-[2px] mx-auto mt-16 opacity-30"
-            style={{ background: 'linear-gradient(90deg, transparent, #dc2626, transparent)' }}
+            className="about-divider w-48 h-[2px] mx-auto mt-16 opacity-40"
+            style={{ background: 'linear-gradient(90deg, transparent, #ffffff, transparent)' }}
           />
 
           {/* Paragraph */}
           <div className="flex justify-center mt-12 md:mt-16">
             <div className="max-w-3xl px-5 flex justify-center">
-              <p className="about-para text-center leading-relaxed text-[#a8a29e] text-lg md:text-xl font-inter" style={{ fontFamily: "'Inter', sans-serif" }}>
-                MEDAITHON'26 is where medicine meets technology in an epic 50-hour battle of innovation. Assemble your team, choose your path, and build solutions that could save lives. Fueled by ramen, mentored by legends, judged by the council.
+              <p className="about-para text-center leading-relaxed text-gray-300 text-lg md:text-xl font-inter">
+                MEDAITHON'26 is where medicine meets technology in an epic 50-hour battle of innovation. Assemble your team, choose your path, and build solutions that could save lives. Fueled by code, mentored by legends, judged by the council.
               </p>
             </div>
           </div>

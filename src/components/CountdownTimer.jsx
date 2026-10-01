@@ -42,19 +42,19 @@ const CountdownTimer = () => {
 
   if (isAwake) {
     return (
-      <div className="text-center font-['Bebas_Neue'] text-4xl sm:text-6xl text-[#f59e0b] border-2 border-[#dc2626] p-6 rounded-2xl bg-[#1a1a2e]/90 shadow-[0_0_30px_rgba(220,38,38,0.6)] backdrop-blur-xl">
-        THE DRAGON HAS AWAKENED 🐉
+      <div className="text-center font-['Bebas_Neue'] text-4xl sm:text-6xl text-white border-2 border-white/30 p-6 rounded-2xl bg-white/10 shadow-[0_0_30px_rgba(255,255,255,0.2)] backdrop-blur-xl">
+        THE HACKATHON IS LIVE 🚀
       </div>
     );
   }
 
   const TimeCard = ({ value, label }) => (
-    <div className="col-center bg-gradient-to-b from-[#1a1a2e]/90 to-[#0a0a0f]/90 border border-[#f59e0b]/30 rounded-2xl p-2.5 sm:p-4 min-w-[66px] sm:min-w-[100px] shadow-[0_8px_25px_rgba(0,0,0,0.5)] backdrop-blur-xl transition-transform hover:scale-105 group relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#f59e0b] to-transparent opacity-80" />
-      <span className="font-['Bebas_Neue'] text-3xl sm:text-5xl text-[#f59e0b] leading-none drop-shadow-[0_2px_10px_rgba(245,158,11,0.4)]">
+    <div className="col-center glass-card border border-white/20 rounded-2xl p-2.5 sm:p-4 min-w-[62px] sm:min-w-[100px] shadow-[0_8px_25px_rgba(0,0,0,0.6)] backdrop-blur-xl transition-transform hover:scale-105 group relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-80" />
+      <span className="font-['Bebas_Neue'] text-3xl sm:text-5xl text-white leading-none drop-shadow-[0_2px_15px_rgba(255,255,255,0.4)]">
         {value.toString().padStart(2, '0')}
       </span>
-      <span className="font-['Inter'] text-[9px] sm:text-xs text-[#a8a29e] mt-1 font-bold tracking-widest uppercase">
+      <span className="font-['Inter'] text-[9px] sm:text-xs text-gray-300 mt-1 font-bold tracking-widest uppercase">
         {label}
       </span>
     </div>
@@ -63,11 +63,11 @@ const CountdownTimer = () => {
   return (
     <div className="flex gap-2 sm:gap-4 justify-center items-center">
       <TimeCard value={timeLeft.days} label="DAYS" />
-      <span className="text-[#f59e0b] font-bold text-xl sm:text-3xl opacity-70 animate-pulse -mt-2">:</span>
+      <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
       <TimeCard value={timeLeft.hours} label="HOURS" />
-      <span className="text-[#f59e0b] font-bold text-xl sm:text-3xl opacity-70 animate-pulse -mt-2">:</span>
+      <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
       <TimeCard value={timeLeft.minutes} label="MINS" />
-      <span className="text-[#f59e0b] font-bold text-xl sm:text-3xl opacity-70 animate-pulse -mt-2">:</span>
+      <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
       <TimeCard value={timeLeft.seconds} label="SECS" />
     </div>
   );

@@ -103,20 +103,19 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
   })
 
   return (
-    <section id="problems" ref={sectionRef} className="ps-section relative w-full bg-[#050508] py-28 px-5 z-10 overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#dc2626]/5 rounded-full blur-[150px] pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto relative z-10">
-        <div className="ps-title text-center mb-12">
-          <p className="text-[#f59e0b] font-semibold tracking-[0.25em] uppercase text-xs md:text-sm mb-3" style={{ fontFamily: "'Inter', sans-serif" }}>
-            課題 • THE CHALLENGE
-          </p>
-          <h3 className="text-4xl sm:text-6xl md:text-7xl text-[#f0e6d3] font-['Bebas_Neue'] tracking-wide uppercase">
-            Official Problem Statements
-          </h3>
-          <p className="text-[#a8a29e] font-['Inter'] text-sm md:text-base max-w-xl mx-auto mt-3">
-            Select a problem statement aligned with your team's expertise. Multi-disciplinary solutions (1 Eng + 1 Med student) earn highest evaluation marks.
+    <section id="problem-statements" ref={sectionRef} className="ps-section relative bg-transparent text-white py-24 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Section Header */}
+        <div className="text-center mb-12 ps-title">
+          <span className="text-xs font-mono font-bold text-white border border-white/20 bg-white/10 px-3.5 py-1.5 rounded-full tracking-widest uppercase inline-block mb-3 backdrop-blur-md">
+            CHALLENGE STATEMENTS
+          </span>
+          <h2 className="text-4xl sm:text-6xl font-['Bebas_Neue'] tracking-wider text-white uppercase m-0 leading-none">
+            PROBLEM STATEMENTS
+          </h2>
+          <p className="text-gray-300 max-w-xl mx-auto text-sm mt-3 font-['Inter']">
+            Select an official clinical challenge to solve. Each problem statement targets high-impact healthcare bottlenecks.
           </p>
         </div>
 
@@ -129,14 +128,13 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
               placeholder="Search problem statements by keyword or ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#111116] border border-white/10 focus:border-[#f59e0b] text-[#f0e6d3] placeholder:text-white/30 text-sm rounded-full py-3.5 pl-12 pr-10 outline-none transition-all shadow-lg"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="w-full bg-white/5 border border-white/20 focus:border-white text-white placeholder:text-white/40 text-sm rounded-full py-3.5 pl-12 pr-10 outline-none transition-all shadow-lg backdrop-blur-md"
             />
-            <svg className="w-5 h-5 text-[#a8a29e] absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             {searchQuery && (
-              <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white text-xs">
+              <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white text-xs cursor-pointer">
                 ✕
               </button>
             )}
@@ -148,8 +146,7 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
               <button
                 key={t}
                 onClick={() => setSelectedTrack(t)}
-                className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer shrink-0 ${selectedTrack === t ? 'bg-[#f59e0b] text-[#0a0a0f] shadow-[0_0_15px_rgba(245,158,11,0.4)] scale-105' : 'bg-[#111116] text-[#a8a29e] border border-white/10 hover:border-white/30'}`}
-                style={{ fontFamily: "'Inter', sans-serif" }}
+                className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 cursor-pointer shrink-0 ${selectedTrack === t ? 'bg-white text-black shadow-[0_0_15px_rgba(255,255,255,0.4)] scale-105' : 'bg-white/5 text-gray-300 border border-white/10 hover:border-white/30 backdrop-blur-md'}`}
               >
                 {t}
               </button>
@@ -160,7 +157,7 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
         {/* Problem Accordion */}
         <div className="ps-accordion space-y-4">
           {filteredProblems.length === 0 ? (
-            <div className="text-center py-12 text-[#a8a29e] bg-[#111116] rounded-2xl border border-white/10">
+            <div className="text-center py-12 text-gray-400 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-md">
               No problem statements found matching your filter criteria.
             </div>
           ) : (
@@ -169,28 +166,28 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
               return (
                 <div 
                   key={ps.id} 
-                  className={`ps-item border transition-all duration-500 overflow-hidden ${isActive ? 'bg-gradient-to-b from-[#161622] to-[#0c0c14] border-[#dc2626]/50 shadow-[0_8px_30px_rgba(220,38,38,0.2)] rounded-2xl' : 'bg-[#111116]/80 border-white/10 hover:border-white/25 rounded-xl'}`}
+                  className={`ps-item border transition-all duration-500 overflow-hidden ${isActive ? 'glass-card border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.8)] rounded-2xl' : 'bg-white/5 border-white/10 hover:border-white/25 rounded-xl backdrop-blur-md'}`}
                 >
                   <button
                     className="w-full px-6 py-5 flex items-center justify-between focus:outline-none text-left cursor-pointer group"
                     onClick={() => toggleAccordion(index)}
                   >
                     <div className="flex items-center gap-5 pr-4">
-                      <span className={`font-['Bebas_Neue'] text-3xl px-3 py-1 rounded-lg transition-colors duration-300 ${isActive ? 'bg-[#dc2626] text-white' : 'bg-white/5 text-[#f59e0b] border border-white/10'}`}>
+                      <span className={`font-['Bebas_Neue'] text-3xl px-3 py-1 rounded-lg transition-colors duration-300 ${isActive ? 'bg-white text-black font-bold' : 'bg-white/10 text-white border border-white/20'}`}>
                         {ps.id}
                       </span>
                       <div>
-                        <h4 className={`font-bold md:text-lg text-sm transition-colors duration-300 ${isActive ? 'text-[#f0e6d3]' : 'text-[#f0e6d3]/90 group-hover:text-white'}`} style={{ fontFamily: "'Inter', sans-serif" }}>
+                        <h4 className={`font-bold md:text-lg text-sm transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-200 group-hover:text-white'}`}>
                           {ps.title}
                         </h4>
-                        <span className="text-[11px] text-[#f59e0b] font-mono mt-1 block">
+                        <span className="text-[11px] text-gray-300 font-mono mt-1 block">
                           ● {ps.track}
                         </span>
                       </div>
                     </div>
                     
                     {/* Plus/Minus Icon */}
-                    <div className={`relative w-7 h-7 shrink-0 flex items-center justify-center rounded-full border transition-all duration-500 ${isActive ? 'rotate-180 border-[#dc2626] text-[#dc2626] bg-[#dc2626]/10' : 'border-white/20 text-[#f59e0b]'}`}>
+                    <div className={`relative w-7 h-7 shrink-0 flex items-center justify-center rounded-full border transition-all duration-500 ${isActive ? 'rotate-180 border-white text-white bg-white/20' : 'border-white/30 text-white'}`}>
                       <div className="absolute w-3.5 h-[2px] bg-current rounded-full" />
                       <div className={`absolute w-[2px] h-3.5 bg-current rounded-full transition-transform duration-300 ${isActive ? 'rotate-90 scale-0' : 'scale-100'}`} />
                     </div>
@@ -200,8 +197,8 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
                     className={`grid transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
                   >
                     <div className="overflow-hidden">
-                      <div className="px-6 pb-6 pt-3 border-t border-white/5 mt-1">
-                        <p className="text-[#f0e6d3]/80 leading-relaxed md:text-base text-sm font-light mb-6" style={{ fontFamily: "'Inter', sans-serif" }}>
+                      <div className="px-6 pb-6 pt-3 border-t border-white/10 mt-1">
+                        <p className="text-gray-300 leading-relaxed md:text-base text-sm font-light mb-6">
                           {ps.description}
                         </p>
 
@@ -209,8 +206,7 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
                           <button
                             type="button"
                             onClick={() => onRegisterClick && onRegisterClick(ps)}
-                            className="bg-gradient-to-r from-[#dc2626] to-[#b91c1c] hover:from-[#ef4444] hover:to-[#dc2626] text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-full shadow-[0_4px_15px_rgba(220,38,38,0.4)] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer"
-                            style={{ fontFamily: "'Inter', sans-serif" }}
+                            className="bg-white hover:bg-gray-200 text-black text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-full shadow-[0_4px_15px_rgba(255,255,255,0.3)] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer border border-white"
                           >
                             <span>Register with {ps.id}</span>
                             <span>→</span>
@@ -219,10 +215,10 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
                           <button
                             type="button"
                             onClick={() => handleCopy(ps.id, ps.title)}
-                            className="border border-white/20 hover:border-[#f59e0b] text-[#f0e6d3] text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-full transition-all hover:bg-white/5 flex items-center gap-1.5 cursor-pointer"
-                            style={{ fontFamily: "'Inter', sans-serif" }}
+                            className="border border-white/30 hover:border-white text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-full transition-all hover:bg-white/10 flex items-center gap-1.5 cursor-pointer backdrop-blur-md"
                           >
-                            <span>{copiedId === ps.id ? '✓ Copied!' : '📋 Copy Title'}</span>
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                            <span>{copiedId === ps.id ? 'Copied!' : 'Copy Title'}</span>
                           </button>
                         </div>
                       </div>

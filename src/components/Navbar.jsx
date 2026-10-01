@@ -61,8 +61,8 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
   // ── Nav pill shrink / grow on scroll ────────────────────────────────────
   useEffect(() => {
     gsap.to(navRef.current, {
-      paddingTop: scrolled ? '0.75rem' : '1.75rem',
-      paddingBottom: scrolled ? '0.75rem' : '1rem',
+      paddingTop: scrolled ? '0.5rem' : '1rem',
+      paddingBottom: scrolled ? '0.5rem' : '0.85rem',
       paddingLeft: scrolled ? '1rem' : '2.25rem',
       paddingRight: scrolled ? '1rem' : '2.25rem',
       duration: 0.4,
@@ -70,8 +70,8 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
     })
     
     gsap.to(pillRef.current, {
-      opacity: scrolled ? 1 : 0,
-      scale: scrolled ? 1 : 1.03,
+      opacity: scrolled ? 1 : 0.85,
+      scale: scrolled ? 1 : 1.01,
       duration: 0.4,
       ease: 'power3.out',
     })
@@ -98,34 +98,32 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
         opacity: 0,
         pointerEvents: 'none',
         duration: 0.3,
-        ease: 'power2.in',
+        ease: 'power3.in',
       })
     }
   }, [menuOpen])
 
-  // ── Magnetic logo ────────────────────────────────────────────────────────
+  // Magnetic logo effect
   const onLogoMove = (e) => {
-    const r = e.currentTarget.getBoundingClientRect()
-    const dx = (e.clientX - (r.left + r.width / 2)) * 0.28
-    const dy = (e.clientY - (r.top + r.height / 2)) * 0.28
-    gsap.to(e.currentTarget, { x: dx, y: dy, duration: 0.35, ease: 'power2.out' })
+    const rect = e.currentTarget.getBoundingClientRect()
+    const dx = e.clientX - (rect.left + rect.width / 2)
+    const dy = e.clientY - (rect.top + rect.height / 2)
+    gsap.to(e.currentTarget, { x: dx * 0.25, y: dy * 0.25, duration: 0.3, ease: 'power2.out' })
   }
   const onLogoLeave = (e) => {
-    gsap.to(e.currentTarget, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)' })
+    gsap.to(e.currentTarget, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' })
   }
 
-  // ── Magnetic CTA ─────────────────────────────────────────────────────────
   const onCtaMove = (e) => {
-    const r = e.currentTarget.getBoundingClientRect()
-    const dx = (e.clientX - (r.left + r.width / 2)) * 0.2
-    const dy = (e.clientY - (r.top + r.height / 2)) * 0.2
-    gsap.to(e.currentTarget, { x: dx, y: dy, duration: 0.35, ease: 'power2.out' })
+    const rect = e.currentTarget.getBoundingClientRect()
+    const dx = e.clientX - (rect.left + rect.width / 2)
+    const dy = e.clientY - (rect.top + rect.height / 2)
+    gsap.to(e.currentTarget, { x: dx * 0.2, y: dy * 0.2, duration: 0.3, ease: 'power2.out' })
   }
   const onCtaLeave = (e) => {
-    gsap.to(e.currentTarget, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)' })
+    gsap.to(e.currentTarget, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' })
   }
 
-  // ── Link underline hover ─────────────────────────────────────────────────
   const onLinkEnter = (e) => {
     const line = e.currentTarget.querySelector('.nav-line')
     if (line) gsap.to(line, { scaleX: 1, duration: 0.3, ease: 'power2.out', transformOrigin: 'left' })
@@ -139,9 +137,9 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
     <>
       <nav
         ref={navRef}
-        className="fixed left-0 w-full z-[9999] px-5 md:px-9 pt-7 pb-4 transition-all duration-300"
+        className="fixed left-0 w-full z-[9999] px-4 md:px-9 pt-5 pb-3.5 transition-all duration-300"
         style={{
-          top: hasBanner ? '36px' : '0px',
+          top: hasBanner ? '44px' : '16px',
           willChange: 'transform, opacity, padding, top',
           opacity: 1,
           transition: 'top 0.3s ease-out, padding 0.4s ease-out',
@@ -150,10 +148,10 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
         {/* Frosted Glass Backdrop Pill */}
         <div 
           ref={pillRef} 
-          className="absolute inset-0 mx-2 md:mx-6 rounded-full bg-[#0a0a0f]/85 backdrop-blur-xl border border-[#f0e6d3]/15 shadow-[0_8px_32px_rgba(0,0,0,0.6)] pointer-events-none opacity-0"
+          className="absolute inset-0 mx-3 md:mx-8 rounded-full bg-black/80 backdrop-blur-2xl border border-white/25 shadow-[0_12px_45px_rgba(0,0,0,0.85)] pointer-events-none"
         >
-          {/* Subtle glowing red accent line at bottom of pill */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-[#dc2626] to-transparent opacity-80" />
+          {/* Subtle glowing chrome accent line */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-80" />
         </div>
 
         <div className="relative z-10 flex items-center justify-between h-full px-4 md:px-6">
@@ -165,7 +163,7 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
             onMouseLeave={onLogoLeave}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/medaithon-logo-nav-footer.png" alt="Medaithon Logo" className="h-9 md:h-11 object-contain transition-transform duration-300 hover:scale-105" style={{ filter: 'drop-shadow(0px 0px 10px rgba(220,38,38,0.4))' }} />
+            <img src="/medaithon-logo-nav-footer.png" alt="Medaithon Logo" className="h-9 md:h-11 object-contain transition-transform duration-300 hover:scale-105" />
           </div>
 
           {/* ── Desktop nav links ─────────────────────────────────────── */}
@@ -177,14 +175,14 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
                 <li key={item}>
                   <a
                     href={`#${id}`}
-                    className={`relative text-[11px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 pb-1 ${isActive ? 'text-[#f59e0b]' : 'text-[#f0e6d3]/70 hover:text-[#f0e6d3]'}`}
+                    className={`relative text-[11px] font-bold tracking-[0.2em] uppercase transition-colors duration-300 pb-1 ${isActive ? 'text-white' : 'text-gray-300 hover:text-white'}`}
                     onMouseEnter={onLinkEnter}
                     onMouseLeave={(e) => onLinkLeave(e, isActive)}
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   >
                     {item}
                     <span
-                      className="nav-line absolute -bottom-0.5 left-0 right-0 h-[2px] bg-[#dc2626] rounded-full transition-transform duration-300"
+                      className="nav-line absolute -bottom-0.5 left-0 right-0 h-[2px] bg-white rounded-full transition-transform duration-300"
                       style={{ transform: isActive ? 'scaleX(1)' : 'scaleX(0)', transformOrigin: 'left' }}
                     />
                   </a>
@@ -198,61 +196,42 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
             <a
               href="/MED_AI_THON_2026_Rulebook.pdf"
               download
-              className="relative overflow-hidden items-center gap-2 border border-[#f0e6d3]/20 hover:border-[#f0e6d3]/60 text-[#f0e6d3] text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-3 rounded-full transition-colors duration-300"
+              className="relative overflow-hidden items-center gap-2 border border-white/30 hover:border-white text-white text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-3 rounded-full transition-colors duration-300 backdrop-blur-md"
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Rulebook
             </a>
             <button
               onClick={onRegisterClick}
-            className="hidden lg:flex relative overflow-hidden items-center gap-2 bg-[#dc2626] text-white text-[10px] font-bold tracking-[0.2em] uppercase px-7 py-3 rounded-full"
-            onMouseMove={onCtaMove}
-            onMouseLeave={onCtaLeave}
-            style={{ fontFamily: "'Inter', sans-serif" }}
-          >
-            {/* Fill sweep */}
-            <span
-              className="absolute inset-0 bg-[#f59e0b] rounded-full"
-              style={{
-                transform: 'scaleX(0)',
-                transformOrigin: 'left',
-                transition: 'transform 0.4s cubic-bezier(0.76,0,0.24,1)',
-              }}
-              ref={(el) => {
-                if (!el) return
-                el.parentElement.addEventListener('mouseenter', () => {
-                  gsap.to(el, { scaleX: 1, duration: 0.4, ease: 'power3.inOut' })
-                })
-                el.parentElement.addEventListener('mouseleave', () => {
-                  gsap.to(el, { scaleX: 0, duration: 0.35, ease: 'power3.inOut', transformOrigin: 'right' })
-                })
-              }}
-            />
-            <span className="relative z-10">Register Now</span>
-            {/* Arrow icon */}
-            <svg
-              className="relative z-10 w-3 h-3"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              className="hidden lg:flex relative overflow-hidden items-center gap-2 bg-white hover:bg-gray-200 text-black text-[10px] font-bold tracking-[0.2em] uppercase px-7 py-3 rounded-full shadow-[0_4px_20px_rgba(255,255,255,0.3)] transition-all cursor-pointer"
+              onMouseMove={onCtaMove}
+              onMouseLeave={onCtaLeave}
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+              <span className="relative z-10">Register Now</span>
+              <svg
+                className="relative z-10 w-3 h-3 text-black"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
           </div>
 
           {/* ── Mobile hamburger ──────────────────────────────────────── */}
           <button
-            className="lg:hidden relative z-10 flex flex-col gap-[5px] p-2"
+            className="lg:hidden relative z-10 flex flex-col gap-[5px] p-2 cursor-pointer"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label="Menu"
           >
             {[0, 1, 2].map((i) => (
               <span
                 key={i}
-                className="block h-[1.5px] bg-[#f0e6d3] transition-all duration-300 ease-out"
+                className="block h-[1.5px] bg-white transition-all duration-300 ease-out"
                 style={{
-                  width: menuOpen && i === 1 ? '22px' : '22px',
+                  width: '22px',
                   transform: menuOpen
                     ? i === 0 ? 'rotate(45deg) translateY(6.5px)'
                       : i === 1 ? 'scaleX(0)'
@@ -263,19 +242,6 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
             ))}
           </button>
         </div>
-
-        {/* ── Frosted pill background — appears on scroll ────────────────── */}
-        <div
-          ref={pillRef}
-          className="absolute inset-0 rounded-2xl pointer-events-none transition-all duration-500"
-          style={{
-            background: scrolled ? 'rgba(10,10,15,0.85)' : 'transparent',
-            backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-            WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-            boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.5), inset 0 0 0 0.5px rgba(220,38,38,0.3)' : 'none',
-            opacity: scrolled ? 1 : 0,
-          }}
-        />
       </nav>
 
       {/* ── Mobile dropdown menu ────────────────────────────────────────── */}
@@ -284,10 +250,10 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
         style={{
           top: hasBanner ? '36px' : '0px',
           opacity: 0,
-          background: 'rgba(10,10,15,0.95)',
+          background: 'rgba(5,5,8,0.95)',
           backdropFilter: 'blur(24px)',
           WebkitBackdropFilter: 'blur(24px)',
-          borderBottom: '0.5px solid rgba(220,38,38,0.3)',
+          borderBottom: '0.5px solid rgba(255,255,255,0.2)',
         }}
       >
         <ul className="flex flex-col gap-1">
@@ -295,7 +261,7 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
             <li key={item}>
               <a
                 href={`#${item.toLowerCase()}`}
-                className="block py-3.5 text-2xl font-bold uppercase tracking-tight text-[#f0e6d3] hover:text-[#f59e0b] border-b border-[#f0e6d3]/10 transition-colors"
+                className="block py-3.5 text-2xl font-bold uppercase tracking-tight text-white hover:text-gray-300 border-b border-white/10 transition-colors"
                 onClick={() => setMenuOpen(false)}
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
@@ -307,14 +273,14 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
             <a
               href="/MED_AI_THON_2026_Rulebook.pdf"
               download
-              className="text-center border border-[#f0e6d3]/20 text-[#f0e6d3] text-sm font-bold tracking-widest uppercase px-8 py-4 rounded-full"
+              className="text-center border border-white/30 text-white text-sm font-bold tracking-widest uppercase px-8 py-4 rounded-full"
               onClick={() => setMenuOpen(false)}
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Download Rulebook
             </a>
             <button
-              className="inline-block bg-[#dc2626] text-white text-sm font-bold tracking-widest uppercase px-8 py-4 rounded-full"
+              className="inline-block bg-white text-black text-sm font-bold tracking-widest uppercase px-8 py-4 rounded-full cursor-pointer"
               onClick={() => {
                 setMenuOpen(false);
                 onRegisterClick();

@@ -23,20 +23,20 @@ const FAQItem = ({ faq, index }) => {
   }, [isOpen])
 
   return (
-    <div className="faq-item border border-white/10 rounded-2xl mb-4 bg-gradient-to-b from-[#161624]/80 to-[#0a0a0f]/90 overflow-hidden backdrop-blur-xl transition-all duration-300 hover:border-[#f59e0b]/40">
+    <div className="faq-item border border-white/20 rounded-2xl mb-4 glass-card overflow-hidden backdrop-blur-xl transition-all duration-300 hover:border-white">
       <div
         className="flex justify-between items-center cursor-pointer px-6 py-5 group"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="font-['Bebas_Neue'] text-xl sm:text-2xl text-[#f0e6d3] group-hover:text-[#f59e0b] transition-colors duration-300 pr-4">
+        <h3 className="font-['Bebas_Neue'] text-xl sm:text-2xl text-white group-hover:text-gray-200 transition-colors duration-300 pr-4">
           {faq.question}
         </h3>
-        <div ref={iconRef} className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-[#f59e0b] text-xl shrink-0 group-hover:bg-[#f59e0b] group-hover:text-[#0a0a0f] transition-all">
+        <div ref={iconRef} className="w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white text-xl shrink-0 group-hover:bg-white group-hover:text-black transition-all">
           +
         </div>
       </div>
       <div ref={contentRef} className="h-0 opacity-0 overflow-hidden">
-        <div className="font-[Inter] text-[#a8a29e] px-6 pb-6 text-sm sm:text-base leading-relaxed border-t border-white/5 pt-3">
+        <div className="font-[Inter] text-gray-300 px-6 pb-6 text-sm sm:text-base leading-relaxed border-t border-white/10 pt-3">
           {faq.answer}
         </div>
       </div>
@@ -68,23 +68,23 @@ const FAQSection = () => {
   )
 
   return (
-    <section id="faq" className="faq-section bg-[#0a0a0f] py-28 md:py-36 relative overflow-hidden">
+    <section id="faq" className="faq-section bg-transparent py-28 md:py-36 relative overflow-hidden text-white">
       <div className="w-full max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center">
         
         {/* Title Block - Centered & Aligned */}
         <div className="w-full text-center mb-12 flex flex-col items-center justify-center">
-          <p className="text-[#f59e0b] font-['Inter'] tracking-[0.25em] mb-3 text-xs sm:text-sm uppercase font-semibold">
+          <p className="text-gray-300 font-['Inter'] tracking-[0.25em] mb-3 text-xs sm:text-sm uppercase font-semibold">
             智慧 • FREQUENTLY ASKED QUESTIONS
           </p>
           <div className="w-full overflow-hidden flex justify-center text-center">
             <h2 
-              className="faq-title text-center text-[#f0e6d3] font-['Bebas_Neue'] uppercase tracking-wider text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none mx-auto inline-block" 
+              className="faq-title text-center text-white font-['Bebas_Neue'] uppercase tracking-wider text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none mx-auto inline-block" 
               style={{ perspective: '1000px' }}
             >
               SCROLL OF WISDOM
             </h2>
           </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#f59e0b] to-transparent mt-4" />
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mt-4 opacity-50" />
         </div>
 
         {/* Real-time Search Input */}
@@ -94,14 +94,14 @@ const FAQSection = () => {
             placeholder="Search questions (e.g., registration fee, team size, laptop)..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full bg-[#11111d] border border-white/10 focus:border-[#f59e0b] text-[#f0e6d3] placeholder:text-white/30 text-sm rounded-full py-3.5 pl-12 pr-10 outline-none transition-all shadow-xl"
+            className="w-full bg-white/5 border border-white/20 focus:border-white text-white placeholder:text-white/40 text-sm rounded-full py-3.5 pl-12 pr-10 outline-none transition-all shadow-xl backdrop-blur-md"
             style={{ fontFamily: "'Inter', sans-serif" }}
           />
-          <svg className="w-5 h-5 text-[#a8a29e] absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
           </svg>
           {query && (
-            <button onClick={() => setQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white text-xs">
+            <button onClick={() => setQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white text-xs cursor-pointer">
               ✕
             </button>
           )}
@@ -110,7 +110,7 @@ const FAQSection = () => {
         {/* FAQ List */}
         <div className="faq-list flex flex-col w-full max-w-3xl">
           {filteredFaqs?.length === 0 ? (
-            <div className="text-center py-10 text-[#a8a29e] bg-[#11111d] rounded-2xl border border-white/10 font-['Inter']">
+            <div className="text-center py-10 text-gray-400 bg-white/5 rounded-2xl border border-white/10 font-['Inter'] backdrop-blur-md">
               No matching questions found.
             </div>
           ) : (

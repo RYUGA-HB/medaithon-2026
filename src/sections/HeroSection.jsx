@@ -11,12 +11,12 @@ const HeroSection = ({ onRegisterClick }) => {
   const outlineButtonRef = useRef()
 
   useGSAP(() => {
-    const tl = gsap.timeline({ delay: 0.3 })
+    const tl = gsap.timeline({ delay: 0.1 })
 
     // Hero content base reveal
-    tl.to('.hero-content', {
-      opacity: 1,
-      y: 0,
+    tl.from('.hero-content', {
+      opacity: 0,
+      y: 15,
       ease: 'expo.out',
       duration: 0.8,
     })
@@ -71,22 +71,21 @@ const HeroSection = ({ onRegisterClick }) => {
         '-=0.3'
       )
 
-    // Scroll-driven tilt + scale out (Desktop only to prevent mobile overflow)
+    // Scroll-driven subtle fade (Desktop only)
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768
     if (!isMobile) {
       const heroTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.hero-container',
-          start: '1% top',
+          start: 'top top',
           end: 'bottom top',
           scrub: 0.5,
         },
       })
 
       heroTl.to('.hero-container', {
-        rotate: 7,
-        scale: 0.88,
-        yPercent: 32,
+        opacity: 0.85,
+        scale: 0.96,
         ease: 'none',
       })
     }
@@ -102,12 +101,12 @@ const HeroSection = ({ onRegisterClick }) => {
 
     // CTA button continual glow pulse
     gsap.to(buttonRef.current, {
-      boxShadow: '0 0 40px 10px rgba(220, 38, 38, 0.4)',
+      boxShadow: '0 0 35px 8px rgba(255, 255, 255, 0.5)',
       duration: 1.8,
       repeat: -1,
       yoyo: true,
       ease: 'sine.inOut',
-      delay: 1.5,
+      delay: 0.5,
     })
   })
 
@@ -122,7 +121,7 @@ const HeroSection = ({ onRegisterClick }) => {
   }
 
   return (
-    <section className="bg-[#0a0a0f] text-[#f0e6d3] relative overflow-hidden min-h-screen md:h-screen w-full flex items-center justify-center pt-28 pb-12 sm:py-24 md:pt-16 md:pb-0">
+    <section className="bg-transparent text-white relative overflow-hidden min-h-screen w-full flex items-center justify-center pt-28 sm:pt-32 lg:pt-36 pb-16">
 
       {/* Background ParticleField */}
       <div className="absolute inset-0 z-0">
@@ -130,89 +129,85 @@ const HeroSection = ({ onRegisterClick }) => {
       </div>
 
       {/* Radial gradient overlay */}
-      <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(10,10,15,0.2) 0%, rgba(10,10,15,0.92) 75%)' }}></div>
+      <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 75%)' }}></div>
 
-      <div className="hero-container relative z-10 w-full flex flex-col items-center justify-center pt-6 sm:pt-8 md:pt-16 h-full max-w-6xl mx-auto px-4 sm:px-6">
-
-        {/* Dragon Graphic */}
-        <img
-          src='/images/dragon.png'
-          alt='dragon spirit'
-          className='hero-dragon-img absolute bottom-0 md:bottom-16 right-0 md:right-10 w-36 sm:w-60 md:w-[450px] object-contain z-0 opacity-10 sm:opacity-20 md:opacity-80 pointer-events-none filter drop-shadow-[0_0_30px_rgba(220,38,38,0.4)]'
-          onError={(e) => e.target.style.display = 'none'}
-        />
-
-        <div className="hero-content opacity-0 relative z-10 flex flex-col items-center text-center w-full max-w-4xl mx-auto" style={{ transform: 'translateY(20px)' }}>
+      <div className="hero-container relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 flex flex-col lg:flex-row items-center justify-start lg:justify-between gap-6 sm:gap-8 lg:gap-10">
+        
+        {/* Left Column: Hero Main Content */}
+        <div className="hero-content relative z-20 flex flex-col items-center lg:items-start text-center lg:text-left w-full lg:w-[58%] xl:w-[60%]">
           
-          {/* Glowing Crimson Sun Backdrop */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[70%] w-[240px] h-[240px] sm:w-[360px] sm:h-[360px] md:w-[540px] md:h-[540px] bg-gradient-to-tr from-[#dc2626] to-[#991b1b] rounded-full blur-[80px] sm:blur-[120px] md:blur-[160px] opacity-30 pointer-events-none animate-pulse"></div>
+          {/* Stable Ambient Glass Glow (No Blinking / Flickering) */}
+          <div className="absolute top-1/2 left-1/2 lg:left-1/3 -translate-x-1/2 -translate-y-[50%] w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] bg-white/10 rounded-full blur-[120px] sm:blur-[160px] pointer-events-none"></div>
 
-          {/* Top Japanese Style Badge (Mobile Only) */}
-          <div className="hero-badge md:hidden mb-2.5 sm:mb-4 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-red-950/70 via-red-900/50 to-red-950/70 border border-red-500/30 backdrop-blur-md text-red-300 text-[9px] sm:text-xs font-mono font-semibold tracking-wider flex items-center justify-center gap-1.5 sm:gap-2 shadow-[0_0_20px_rgba(220,38,38,0.25)] max-w-[90vw]">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-red-500 animate-ping shrink-0"></span>
+          {/* Top Event Badge */}
+          <div className="hero-badge mb-2 sm:mb-3 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/30 backdrop-blur-md text-white text-[9px] sm:text-xs font-mono font-semibold tracking-wider inline-flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            <span className="w-2 h-2 rounded-full bg-white animate-ping shrink-0"></span>
             <span className="truncate">医療AIハッカソン • 50-HOUR WARRIOR SPRINT</span>
           </div>
           
-          {/* Main Logo Image */}
-          <div className="hero-main-logo w-full max-w-[240px] sm:max-w-md md:max-w-2xl mb-2 sm:mb-4 md:mb-5 px-2 relative z-10">
-            <img src="/medaithon-logo.png" alt="Medaithon" className="w-full h-auto object-contain drop-shadow-[0_10px_35px_rgba(220,38,38,0.3)] mx-auto" />
+          {/* Main Logo Image (Preserve original vibrant logo color) */}
+          <div className="hero-main-logo w-full max-w-[260px] sm:max-w-md md:max-w-xl lg:max-w-2xl mb-2 sm:mb-3 relative z-10">
+            <img src="/medaithon-logo.png" alt="Medaithon" className="w-full h-auto object-contain drop-shadow-[0_10px_30px_rgba(255,255,255,0.25)]" />
           </div>
 
           {/* Tagline / Sub-description */}
-          <h2 className="hero-description max-w-xl text-[11px] sm:text-sm md:text-base text-[#c5beb3] mb-3 sm:mb-5 leading-relaxed font-inter px-3" style={{ fontFamily: "'Inter', sans-serif" }}>
+          <h2 className="hero-description max-w-xl text-xs sm:text-sm md:text-base text-gray-300 mb-3 sm:mb-4 leading-relaxed font-inter">
             Where code meets the way of the dragon. 50 hours of relentless innovation forging the future of medicine.
           </h2>
 
-          {/* Interactive Feature Pills (2x2 Grid on Mobile, Flex on Desktop) */}
-          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-7 max-w-lg sm:max-w-2xl px-2 w-full">
-            <div className="hero-pill-badge px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-red-500/40 hover:bg-red-950/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-[#f0e6d3] flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 shadow-sm">
-              <span>⚡</span> <span>50 Hours</span>
+          {/* Mobile-Only Medi Dragon Character (Compact spacing on Mobile & Tablet) */}
+          <div className="lg:hidden w-full flex justify-center my-2 sm:my-3 relative z-20">
+            <img
+              src="/images/medi-dragon.png"
+              alt="Medi Dragon"
+              className="hero-dragon-img w-44 sm:w-60 md:w-64 object-contain filter drop-shadow-[0_10px_25px_rgba(255,255,255,0.3)] transition-transform duration-500"
+            />
+          </div>
+
+          {/* Interactive Feature Pills */}
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-3 sm:mb-4 max-w-lg sm:max-w-2xl w-full">
+            <div className="hero-pill-badge px-3 py-1.5 rounded-full bg-white/10 border border-white/20 hover:border-white/50 hover:bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-white flex items-center justify-center gap-1.5 transition-all shadow-sm">
+              <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              <span>50 Hours</span>
             </div>
-            <div className="hero-pill-badge px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-amber-500/40 hover:bg-amber-950/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-amber-300 flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 shadow-sm">
-              <span>🏆</span> <span>₹1L+ Prizes</span>
+            <div className="hero-pill-badge px-3 py-1.5 rounded-full bg-white/10 border border-white/20 hover:border-white/50 hover:bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-white flex items-center justify-center gap-1.5 transition-all shadow-sm">
+              <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 3v4M3 5h4M6 17v4m-2 0h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+              <span>₹1L+ Prizes</span>
             </div>
-            <div className="hero-pill-badge px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-emerald-500/40 hover:bg-emerald-950/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-emerald-300 flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 shadow-sm">
-              <span>🐉</span> <span>200+ Hackers</span>
+            <div className="hero-pill-badge px-3 py-1.5 rounded-full bg-white/10 border border-white/20 hover:border-white/50 hover:bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-white flex items-center justify-center gap-1.5 transition-all shadow-sm">
+              <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5 5 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+              <span>200+ Hackers</span>
             </div>
-            <div className="hero-pill-badge px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-cyan-500/40 hover:bg-cyan-950/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-cyan-300 flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 shadow-sm">
-              <span>🩺</span> <span>1 ENG + 1 MED</span>
+            <div className="hero-pill-badge px-3 py-1.5 rounded-full bg-white/10 border border-white/20 hover:border-white/50 hover:bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-white flex items-center justify-center gap-1.5 transition-all shadow-sm">
+              <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L5.594 15.12a2 2 0 00-1.022.547l-1.42 1.42A2 2 0 004.566 20.5h14.868a2 2 0 001.414-3.414l-1.42-1.42z" /></svg>
+              <span>1 ENG + 1 MED</span>
             </div>
           </div>
 
-          {/* Countdown */}
-          <div className="mb-2 sm:mb-4 md:mb-5 w-full max-w-md sm:max-w-lg px-2">
+          {/* Countdown Timer */}
+          <div className="mb-4 sm:mb-5 w-full max-w-md lg:max-w-lg">
             <CountdownTimer />
           </div>
 
-          {/* CTAs */}
-          <div className="relative z-30 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 md:gap-5 w-full sm:w-auto max-w-xs sm:max-w-none mx-auto px-2">
-            
-            {/* Register Now Primary Button */}
+          {/* Action CTAs - Prominent Register Now CTA directly below Countdown Timer */}
+          <div className="relative z-50 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full mt-2 pointer-events-auto">
+            {/* Primary Register Now Button */}
             <button
               ref={buttonRef}
               type="button"
               onClick={(e) => {
                 e.preventDefault()
                 e.stopPropagation()
-                if (typeof onRegisterClick === 'function') {
-                  onRegisterClick()
-                }
+                if (typeof onRegisterClick === 'function') onRegisterClick()
               }}
-              className="hero-button group relative w-full sm:w-auto cursor-pointer bg-gradient-to-r from-[#dc2626] via-[#b91c1c] to-[#991b1b] hover:from-[#ef4444] hover:to-[#dc2626] text-white px-8 py-3.5 rounded-full font-bold tracking-widest uppercase text-xs sm:text-sm font-inter transition-all duration-300 shadow-[0_4px_25px_rgba(220,38,38,0.55)] hover:shadow-[0_4px_35px_rgba(220,38,38,0.8)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 border border-white/20 overflow-hidden shrink-0"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="hero-button group relative cursor-pointer bg-white hover:bg-neutral-200 text-black px-8 py-3.5 rounded-full font-extrabold tracking-widest uppercase text-xs sm:text-sm font-inter transition-all duration-300 shadow-[0_4px_30px_rgba(255,255,255,0.6)] hover:shadow-[0_4px_40px_rgba(255,255,255,0.9)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 border-2 border-white w-full sm:w-auto shrink-0 z-50"
             >
-              {/* Shimmer sweep effect */}
-              <span className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none" />
-
-              {/* Live status dot */}
-              <span className="relative flex h-2 w-2 shrink-0 pointer-events-none">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+              <span className="relative flex h-2.5 w-2.5 shrink-0 pointer-events-none">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black"></span>
               </span>
-
-              <span className="pointer-events-none whitespace-nowrap">Register Now</span>
-
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 shrink-0 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <span className="pointer-events-none whitespace-nowrap text-black font-extrabold">Register Now</span>
+              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 shrink-0 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </button>
@@ -221,10 +216,9 @@ const HeroSection = ({ onRegisterClick }) => {
             <a
               href="/ppt_template/MEDAITHON_Team_Template-2.pptx"
               download="MEDAITHON_Team_Template-2.pptx"
-              className="hero-button relative group w-full sm:w-auto cursor-pointer bg-gradient-to-r from-[#f59e0b] to-[#d97706] hover:from-[#fbbf24] hover:to-[#f59e0b] text-[#0a0a0f] px-7 py-3.5 rounded-full font-bold tracking-widest uppercase text-xs sm:text-sm font-inter transition-all duration-300 shadow-[0_4px_20px_rgba(245,158,11,0.35)] hover:shadow-[0_4px_28px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2 border border-amber-300/30 whitespace-nowrap"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="hero-button relative group cursor-pointer bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-full font-bold tracking-widest uppercase text-xs font-inter transition-all duration-300 shadow-md hover:scale-105 active:scale-95 flex items-center justify-center gap-2 border border-white/30 backdrop-blur-md whitespace-nowrap w-full sm:w-auto"
             >
-              <span className="absolute -top-2 -right-1 bg-[#dc2626] text-white text-[9px] font-black font-['Bebas_Neue'] tracking-wider px-2 py-0.5 rounded-full border border-white/40 shadow-sm animate-bounce">
+              <span className="absolute -top-2 -right-1 bg-white text-black text-[9px] font-black font-['Bebas_Neue'] tracking-wider px-2 py-0.5 rounded-full border border-black shadow-sm animate-bounce">
                 NEW v2
               </span>
               <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
@@ -237,51 +231,45 @@ const HeroSection = ({ onRegisterClick }) => {
             <a
               href="/MED_AI_THON_2026_Rulebook.pdf"
               download="MED_AI_THON_2026_Rulebook.pdf"
-              className="hero-button w-full sm:w-auto cursor-pointer bg-white/10 hover:bg-white/20 text-[#f0e6d3] hover:text-white px-6 py-3.5 rounded-full font-bold tracking-widest uppercase text-xs sm:text-sm font-inter transition-all duration-300 border border-white/20 hover:border-[#f59e0b] backdrop-blur-md shadow-lg hover:scale-105 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap"
-              style={{ fontFamily: "'Inter', sans-serif" }}
+              className="hero-button cursor-pointer bg-white/5 hover:bg-white/15 text-gray-200 hover:text-white px-5 py-3 rounded-full font-bold tracking-widest uppercase text-xs font-inter transition-all border border-white/20 hover:border-white backdrop-blur-md hover:scale-105 active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap w-full sm:w-auto"
             >
-              <svg className="w-4 h-4 shrink-0 text-[#f59e0b]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+              <svg className="w-4 h-4 shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               <span>Rulebook PDF</span>
             </a>
-
-            {/* Learn More Button */}
-            <a
-              href="#about"
-              onClick={handleLearnMore}
-              className="hero-button w-full sm:w-auto cursor-pointer border border-[#f0e6d3]/30 hover:border-[#f59e0b] text-[#f0e6d3] hover:text-[#f59e0b] hover:bg-[#f0e6d3]/5 transition-all duration-300 px-7 py-3.5 rounded-full font-bold tracking-widest uppercase text-xs sm:text-sm font-inter backdrop-blur-sm hover:scale-105 active:scale-95 flex items-center justify-center no-underline whitespace-nowrap"
-              style={{ fontFamily: "'Inter', sans-serif" }}
-            >
-              <span>Learn More</span>
-            </a>
-
           </div>
+
         </div>
-        
-        {/* Floating Register Button (Visible on mobile & desktop) */}
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            if (typeof onRegisterClick === 'function') {
-              onRegisterClick()
-            }
-          }}
-          className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-20 group flex items-center gap-2 bg-gradient-to-r from-[#dc2626] to-[#b91c1c] hover:from-[#ef4444] hover:to-[#dc2626] text-white px-5 sm:px-6 py-2 sm:py-2.5 rounded-full font-bold tracking-widest uppercase text-[10px] sm:text-xs font-inter transition-all duration-300 shadow-[0_4px_20px_rgba(220,38,38,0.6)] hover:scale-105 active:scale-95 border border-white/20 backdrop-blur-md"
-          style={{ fontFamily: "'Inter', sans-serif" }}
-        >
-          <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
-          </span>
-          <span>Register Now</span>
-          <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </button>
+
+        {/* Desktop-Only Right Column: Medi Dragon Character */}
+        <div className="hero-dragon-wrap hidden lg:flex w-full lg:w-[38%] xl:w-[35%] items-center justify-end relative z-20">
+          <img
+            src="/images/medi-dragon.png"
+            alt="Medi Dragon"
+            className="hero-dragon-img w-80 lg:w-[380px] xl:w-[420px] object-contain filter drop-shadow-[0_15px_35px_rgba(255,255,255,0.25)] transition-all duration-500 hover:scale-105"
+          />
+        </div>
+
       </div>
+
+      {/* Floating Mobile Register CTA */}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          if (typeof onRegisterClick === 'function') onRegisterClick()
+        }}
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[99] sm:hidden flex items-center gap-2 bg-white hover:bg-neutral-200 text-black px-6 py-2.5 rounded-full font-extrabold tracking-widest uppercase text-xs shadow-[0_4px_25px_rgba(255,255,255,0.5)] border-2 border-white cursor-pointer backdrop-blur-md"
+      >
+        <span className="relative flex h-2 w-2 shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
+        </span>
+        <span>Register Now</span>
+        <span>→</span>
+      </button>
     </section>
   )
 }

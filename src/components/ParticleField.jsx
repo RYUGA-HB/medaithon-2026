@@ -11,13 +11,13 @@ const ParticleField = () => {
     let animationFrameId;
     
     let particles = [];
-    // Sakura pinks & Medical Crimson / Gold embers
+    // Monochrome Silver & Pure White sparks
     const colors = [
-      'rgba(255, 183, 197, 0.75)', // Sakura pink
-      'rgba(255, 158, 175, 0.75)',
-      'rgba(220, 38, 38, 0.65)',   // Crimson glow
-      'rgba(245, 158, 11, 0.65)',   // Gold ember
-      'rgba(255, 107, 53, 0.55)'    // Fire spark
+      'rgba(255, 255, 255, 0.85)',
+      'rgba(230, 230, 240, 0.75)',
+      'rgba(200, 200, 210, 0.65)',
+      'rgba(255, 255, 255, 0.95)',
+      'rgba(160, 160, 175, 0.55)'
     ];
     
     let mouse = { x: -1000, y: -1000 };
@@ -55,7 +55,7 @@ const ParticleField = () => {
         const height = window.innerHeight;
         this.x = Math.random() * width;
         this.y = initial ? Math.random() * height : -20 - Math.random() * 50;
-        this.size = Math.random() * 4 + 3;
+        this.size = Math.random() * 3.5 + 2.5;
         this.color = colors[Math.floor(Math.random() * colors.length)];
         this.isEmber = Math.random() > 0.4;
         

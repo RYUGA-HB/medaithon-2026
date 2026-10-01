@@ -1,11 +1,11 @@
 export const EVENT_DATE = new Date('2026-10-24T12:00:00+05:30')
 
 export const tracks = [
-  { name: 'Hardware / IoT Track', icon: '⚙️', description: 'Build AI-powered solutions for diagnostics, drug discovery, and clinical decision support.', color: '#dc2626', gradient: 'from-red-900 to-red-700' },
-  { name: 'AI / Software Track', icon: '💻', description: 'Innovate in biotechnology — from gene editing tools to synthetic biology platforms.', color: '#10b981', gradient: 'from-emerald-900 to-emerald-700' },
-  { name: 'HealthTech / Interoperability Track', icon: '🏥', description: 'Push the boundaries of brain-computer interfaces, neural imaging, and cognitive enhancement.', color: '#8b5cf6', gradient: 'from-violet-900 to-violet-700' },
-  { name: 'Advanced / Hybrid Track', icon: '🧪', description: 'Reimagine digital health infrastructure — EHR systems, telemedicine, and patient portals.', color: '#3b82f6', gradient: 'from-blue-900 to-blue-700' },
-  { name: 'DragonForge Open', icon: '🐉', description: 'Open innovation track — build anything that revolutionizes healthcare. No limits.', color: '#f59e0b', gradient: 'from-amber-900 to-amber-700' },
+  { name: 'Hardware / IoT Track', icon: '⚙️', description: 'Build AI-powered solutions for diagnostics, drug discovery, and clinical decision support.', color: '#ffffff', gradient: 'from-zinc-800 via-zinc-900 to-black' },
+  { name: 'AI / Software Track', icon: '💻', description: 'Innovate in biotechnology — from gene editing tools to synthetic biology platforms.', color: '#e5e7eb', gradient: 'from-neutral-800 via-neutral-900 to-black' },
+  { name: 'HealthTech / Interoperability Track', icon: '🏥', description: 'Push the boundaries of brain-computer interfaces, neural imaging, and cognitive enhancement.', color: '#d1d5db', gradient: 'from-gray-800 via-gray-900 to-black' },
+  { name: 'Advanced / Hybrid Track', icon: '🧪', description: 'Reimagine digital health infrastructure — EHR systems, telemedicine, and patient portals.', color: '#9ca3af', gradient: 'from-stone-800 via-stone-900 to-black' },
+  { name: 'DragonForge Open', icon: '🐉', description: 'Open innovation track — build anything that revolutionizes healthcare. No limits.', color: '#f3f4f6', gradient: 'from-slate-800 via-slate-900 to-black' },
 ]
 
 export const timelineData = [
@@ -41,9 +41,9 @@ export const judges = [
 ]
 
 export const prizes = [
-  { title: '1st Prize', japaneseTitle: '1等賞', place: 'Winner', amount: '₹30,000', description: 'The supreme champion — awarded to the team that embodies innovation, execution, and impact.', color: '#f59e0b', icon: '🏆' },
-  { title: '2nd Prize', japaneseTitle: '2等賞', place: 'Runner Up', amount: '₹20,000', description: 'Swift, clever, and lethal — for the team that dazzles with ingenuity.', color: '#c0c0c0', icon: '🥈' },
-  { title: '3rd Prize', japaneseTitle: '3等賞', place: 'Second Runner Up', amount: '₹15,000', description: 'The pack leader — relentless execution meets raw power.', color: '#cd7f32', icon: '🥉' },
+  { title: '1st Prize', japaneseTitle: '1等賞', place: 'Winner', amount: '₹30,000', description: 'The supreme champion — awarded to the team that embodies innovation, execution, and impact.', color: '#ffffff', icon: '🏆' },
+  { title: '2nd Prize', japaneseTitle: '2等賞', place: 'Runner Up', amount: '₹20,000', description: 'Swift, clever, and lethal — for the team that dazzles with ingenuity.', color: '#d1d5db', icon: '🥈' },
+  { title: '3rd Prize', japaneseTitle: '3等賞', place: 'Second Runner Up', amount: '₹15,000', description: 'The pack leader — relentless execution meets raw power.', color: '#9ca3af', icon: '🥉' },
 ]
 
 export const stats = [
@@ -54,6 +54,9 @@ export const stats = [
 ]
 
 export const sponsors = {
+  collaboration: [
+    { name: 'StartupTN', logo: '/images/startuptn-logo.png' },
+  ],
   gold: [
     { name: 'R Shivakumar Foundation', logo: '/images/rs-foundation-logo.jpeg' },
   ],

@@ -14,11 +14,11 @@ const ENHANCED_PRIZES = [
     place: '🏆 SUPREME CHAMPION',
     amount: '₹30,000',
     description: 'Awarded to the team displaying peak clinical impact, technical execution, and presentation perfection.',
-    color: '#f59e0b',
-    glowColor: 'rgba(245,158,11,0.3)',
-    badgeBg: 'bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/50',
-    borderColor: 'border-[#f59e0b]/50',
-    icon: '🏆',
+    color: '#ffffff',
+    glowColor: 'rgba(255,255,255,0.3)',
+    badgeBg: 'bg-white/20 text-white border-white/50',
+    borderColor: 'border-white/50',
+    
     perks: ['₹30,000 Cash Prize', 'Winner Trophy & Gold Medals', 'Direct Incubation Support'],
     isFeatured: true,
   },
@@ -30,9 +30,9 @@ const ENHANCED_PRIZES = [
     description: 'For the team demonstrating outstanding engineering novelty and medical problem solving.',
     color: '#e2e8f0',
     glowColor: 'rgba(226,232,240,0.25)',
-    badgeBg: 'bg-slate-200/20 text-slate-200 border-slate-300/40',
-    borderColor: 'border-slate-300/40',
-    icon: '🥈',
+    badgeBg: 'bg-white/10 text-gray-200 border-white/30',
+    borderColor: 'border-white/30',
+    
     perks: ['₹20,000 Cash Prize', 'Runner-Up Trophy & Silver Medals', 'Certificate of Distinction'],
     isFeatured: false,
   },
@@ -42,11 +42,11 @@ const ENHANCED_PRIZES = [
     place: '🥉 SECOND RUNNER UP',
     amount: '₹15,000',
     description: 'Recognizing relentless execution, high feasibility, and strong cross-disciplinary teamwork.',
-    color: '#d97706',
-    glowColor: 'rgba(217,119,6,0.25)',
-    badgeBg: 'bg-amber-700/20 text-amber-500 border-amber-600/40',
-    borderColor: 'border-amber-600/40',
-    icon: '🥉',
+    color: '#cbd5e1',
+    glowColor: 'rgba(203,213,225,0.25)',
+    badgeBg: 'bg-white/10 text-gray-300 border-white/20',
+    borderColor: 'border-white/20',
+  
     perks: ['₹15,000 Cash Prize', '3rd Place Trophy & Bronze Medals', 'Certificate of Distinction'],
     isFeatured: false,
   },
@@ -56,11 +56,11 @@ const ENHANCED_PRIZES = [
     place: '🌟 SPECIAL MENTION (7 TEAMS)',
     amount: 'Exciting Goodies',
     description: 'Recognizing 7 outstanding teams for their exceptional ideas, creative approach, and innovative potential.',
-    color: '#10b981',
-    glowColor: 'rgba(16,185,129,0.25)',
-    badgeBg: 'bg-emerald-700/20 text-emerald-400 border-emerald-600/40',
-    borderColor: 'border-emerald-600/40',
-    icon: '🌟',
+    color: '#94a3b8',
+    glowColor: 'rgba(148,163,184,0.25)',
+    badgeBg: 'bg-white/10 text-gray-400 border-white/20',
+    borderColor: 'border-white/20',
+  
     perks: ['Exclusive Medaithon Swags', 'Certificate of Recognition', 'Mentorship Opportunities'],
     isFeatured: false,
   },
@@ -98,176 +98,111 @@ const PrizesSection = () => {
             stagger: 0.05,
             ease: 'expo.out',
             duration: 0.9,
-            scrollTrigger: { trigger: '.prizes-section', start: 'top 70%' },
+            scrollTrigger: {
+                trigger: '.prizes-intro-box',
+                start: 'top 85%',
+            },
         })
 
-        gsap.from('.prizes-card-reveal', {
+        gsap.from('.prize-card-item', {
             opacity: 0,
-            y: 40,
+            y: 45,
             stagger: 0.15,
-            duration: 0.8,
+            duration: 0.9,
             ease: 'power3.out',
-            scrollTrigger: { trigger: '.prizes-grid', start: 'top 80%' },
-        })
-
-        gsap.utils.toArray('.prize-amount-count').forEach((el) => {
-            const valStr = el.dataset.value || "0"
-            const valNum = parseFloat(valStr.replace(/[^0-9.]/g, ''))
-            const prefix = valStr.match(/^[^\d]+/)?.[0] || ''
-            const suffix = valStr.match(/[^\d]+$/)?.[0] || ''
-            
-            if (isNaN(valNum)) {
-                el.textContent = valStr;
-                return;
-            }
-
-            const obj = { val: 0 }
-
-            gsap.to(obj, {
-                val: valNum,
-                duration: 2,
-                ease: 'expo.out',
-                onUpdate: () => {
-                    el.textContent = `${prefix}${Math.round(obj.val).toLocaleString()}${suffix}`
-                },
-                scrollTrigger: { trigger: el, start: 'top 85%' },
-            })
+            scrollTrigger: {
+                trigger: '.prize-cards-grid',
+                start: 'top 80%',
+            },
         })
     })
 
     return (
-        <section id="prizes" className="prizes-section relative overflow-hidden bg-[#0a0a0f] py-28 md:py-36 text-[#f0e6d3] border-t border-white/5">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#f59e0b]/10 rounded-full blur-[160px] pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#dc2626]/10 rounded-full blur-[140px] pointer-events-none" />
-
-            <div className="max-w-7xl mx-auto px-5 relative z-10">
+        <section id="prizes" className="prizes-section relative bg-transparent text-white py-24 sm:py-32 px-4 sm:px-6">
+            <div className="max-w-7xl mx-auto">
                 
-                {/* Header Tag */}
-                <div className="text-center mb-12">
-                    <p className="text-[#f59e0b] font-['Inter'] tracking-[0.25em] mb-3 text-xs md:text-sm uppercase font-semibold">
-                        栄誉と賞金 • Total Prize Pool ₹65,000+
-                    </p>
-                    <h2 className="text-[#f0e6d3] font-['Bebas_Neue'] text-5xl sm:text-6xl md:text-7xl lg:text-8xl uppercase tracking-wider leading-none m-0">
-                        ATTRACTIVE PRIZE POOL
-                    </h2>
-                    <p className="text-[#a8a29e] font-['Inter'] text-base md:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
-                        Honoring medical AI pioneers with cash rewards, trophies, certificates of distinction, and mentorship.
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <div className="inline-block bg-white/10 border border-white/20 px-4 py-1.5 rounded-full backdrop-blur-md mb-4 shadow-md">
+                        <span className="text-xs font-mono font-bold text-white uppercase tracking-widest">
+                            ● WARRIOR REWARDS
+                        </span>
+                    </div>
+
+                    <div className="flex flex-col items-center justify-center">
+                        <div className="first-title opacity-0 font-['Bebas_Neue'] text-5xl sm:text-7xl md:text-8xl tracking-wider text-white uppercase leading-none">
+                            HONOR & GLORY
+                        </div>
+                        <div className="second-title opacity-0 font-['Bebas_Neue'] text-3xl sm:text-5xl md:text-6xl tracking-wider text-gray-400 uppercase leading-none mt-1">
+                            賞金 • PRIZE POOL OVERVIEW
+                        </div>
+                    </div>
+                </div>
+
+                {/* Total Pool Banner */}
+                <div className="prizes-intro-box mb-16 rounded-3xl glass-card border border-white/30 p-8 sm:p-10 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] text-center relative overflow-hidden">
+                    <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-white/10 blur-[80px] pointer-events-none" />
+                    
+                    <span className="text-xs font-mono font-bold text-gray-300 uppercase tracking-widest block mb-2">
+                        TOTAL CASH PRIZE & INCUBATION POOL
+                    </span>
+                    <h3 className="font-['Bebas_Neue'] text-6xl sm:text-8xl md:text-9xl text-white tracking-wide m-0 drop-shadow-[0_0_40px_rgba(255,255,255,0.4)]">
+                        ₹1,00,000+
+                    </h3>
+                    <p className="prizes-intro-word text-gray-300 max-w-2xl mx-auto text-sm sm:text-base mt-4 font-['Inter'] leading-relaxed">
+                        Compete across 5 healthcare innovation tracks for cash awards, direct incubation opportunities with SRM ecosystems, and recognition from industry leaders.
                     </p>
                 </div>
 
-                {/* Animated Stacked Titles Banner */}
-                <div className="col-center relative mb-20 md:mb-24 flex flex-col items-center justify-center">
-                    <ClipPathTitle
-                        title="PRIZE POOL"
-                        color="#0a0a0f"
-                        bg="#f59e0b"
-                        className="first-title rotate-[3deg]"
-                        borderColor="#f59e0b"
-                    />
-                    <ClipPathTitle
-                        title="1ST PRIZE 30K"
-                        color="#0a0a0f"
-                        bg="#ffd700"
-                        className="second-title rotate-[-1deg] -translate-y-5"
-                        borderColor="#ffd700"
-                    />
-                    <ClipPathTitle
-                        title="2ND PRIZE 20K"
-                        color="#0a0a0f"
-                        bg="#e2e8f0"
-                        className="third-title rotate-[1deg] -translate-y-12"
-                        borderColor="#e2e8f0"
-                    />
-                    <ClipPathTitle
-                        title="3RD PRIZE 15K"
-                        color="#f0e6d3"
-                        bg="#d97706"
-                        className="fourth-title rotate-[-5deg] -translate-y-12"
-                        borderColor="#d97706"
-                    />
-                    <ClipPathTitle
-                        title="SPECIAL MENTIONS"
-                        color="#0a0a0f"
-                        bg="#10b981"
-                        className="fifth-title rotate-[2deg] -translate-y-12"
-                        borderColor="#10b981"
-                    />
-                </div>
-
-                {/* Enhanced Grid of Luxury Prize Cards */}
-                <div className="prizes-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                {/* Prize Cards Grid */}
+                <div className="prize-cards-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                     {ENHANCED_PRIZES.map((prize, idx) => (
-                        <div 
-                          key={idx} 
-                          className={`relative rounded-3xl p-6 sm:p-7 border backdrop-blur-xl flex flex-col justify-between transition-all duration-500 hover:scale-[1.02] group overflow-hidden ${prize.borderColor} ${
-                            prize.isFeatured 
-                                ? 'bg-gradient-to-br from-[#1a1a2e] via-[#151522] to-[#0d0d14] shadow-[0_0_50px_rgba(245,158,11,0.25)] border-[#f59e0b]/60' 
-                                : 'bg-gradient-to-br from-[#161626]/90 via-[#0f0f18]/90 to-[#0a0a0f]/95 shadow-[0_15px_40px_rgba(0,0,0,0.6)]'
-                          }`}
+                        <div
+                            key={idx}
+                            className={`prize-card-item rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 glass-card glass-card-hover border relative group ${
+                                prize.isFeatured
+                                    ? 'border-white/50 shadow-[0_25px_60px_rgba(0,0,0,0.9),inset_0_1px_2px_rgba(255,255,255,0.4)] md:-translate-y-4'
+                                    : 'border-white/20 hover:border-white/40'
+                            }`}
                         >
-                            {/* Top Accent Lighting Line */}
-                            <div 
-                              className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-transparent via-current to-transparent opacity-80"
-                              style={{ color: prize.color }}
-                            />
-
-                            {/* Card Top: Ribbon Badge & Icon */}
+                            {/* Crown / Top Badge */}
                             <div>
-                                <div className="flex justify-between items-start mb-6">
-                                    <div>
-                                        <span className={`text-xs font-bold font-['Bebas_Neue'] tracking-widest px-3.5 py-1.5 rounded-full border mb-3 inline-block shadow-sm ${prize.badgeBg}`}>
-                                            {prize.place}
-                                        </span>
-                                        <h3 className="text-3xl sm:text-4xl md:text-5xl font-['Bebas_Neue'] uppercase tracking-wider text-[#f0e6d3] m-0">
-                                            {prize.title}
-                                        </h3>
-                                        <span className="text-xs text-[#f59e0b] font-mono tracking-wider block mt-1">
-                                            {prize.japaneseTitle}
-                                        </span>
-                                    </div>
-                                    <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300 shadow-inner shrink-0">
+                                <div className="flex justify-between items-start mb-4">
+                                    <span className="text-4xl sm:text-5xl drop-shadow-md group-hover:scale-110 transition-transform">
                                         {prize.icon}
-                                    </div>
-                                </div>
-
-                                {/* Main Amount Counter */}
-                                <div className="my-5 border-y border-white/10 py-4 flex items-baseline justify-between">
-                                    <span className="text-xs font-mono uppercase tracking-widest text-[#a8a29e]">Cash Prize</span>
-                                    <span 
-                                        className="text-5xl sm:text-6xl font-bold font-['Bebas_Neue'] prize-amount-count tracking-wider"
-                                        style={{ color: prize.color, textShadow: `0 0 20px ${prize.glowColor}` }} 
-                                        data-value={prize.amount}
-                                    >
-                                        0
+                                    </span>
+                                    <span className={`text-[10px] font-bold font-['Bebas_Neue'] tracking-widest px-3 py-1 rounded-full uppercase border ${prize.badgeBg}`}>
+                                        {prize.japaneseTitle}
                                     </span>
                                 </div>
 
-                                <p className="text-[#a8a29e] font-['Inter'] text-sm leading-relaxed mb-6">
+                                <span className="text-xs font-mono font-bold text-gray-300 uppercase tracking-wider block">
+                                    {prize.place}
+                                </span>
+                                <h4 className="font-['Bebas_Neue'] text-3xl sm:text-4xl text-white tracking-wide my-1">
+                                    {prize.title}
+                                </h4>
+                                <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-mono my-3">
+                                    {prize.amount}
+                                </div>
+                                <p className="text-xs text-gray-300 leading-relaxed font-['Inter'] mb-6">
                                     {prize.description}
                                 </p>
                             </div>
 
-                            {/* Included Perks Checklist */}
-                            <div className="pt-4 border-t border-white/5 space-y-2">
-                                <span className="text-[11px] font-mono uppercase tracking-widest text-[#f59e0b] block mb-2">Included Rewards & Perks</span>
+                            {/* Perks List */}
+                            <div className="pt-4 border-t border-white/10 space-y-2">
                                 {prize.perks.map((perk, i) => (
-                                    <div key={i} className="flex items-center gap-2.5 text-xs text-[#f0e6d3]">
-                                        <span className="text-emerald-400 font-bold text-sm">✓</span>
+                                    <div key={i} className="flex items-center gap-2 text-xs text-gray-200">
+                                        <svg className="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                        </svg>
                                         <span>{perk}</span>
                                     </div>
                                 ))}
                             </div>
-
                         </div>
                     ))}
-                </div>
-
-                {/* Total Pool Banner Footer */}
-                <div className="mt-16 text-center max-w-2xl mx-auto p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
-                    <p className="font-['Bebas_Neue'] text-2xl tracking-widest text-[#f59e0b] m-0">
-                        ⚡ ALL PARTICIPANTS RECEIVE OFFICIAL MEDAITHON '26 CERTIFICATES & SWAG KITS
-                    </p>
                 </div>
 
             </div>
@@ -276,4 +211,3 @@ const PrizesSection = () => {
 }
 
 export default PrizesSection
-

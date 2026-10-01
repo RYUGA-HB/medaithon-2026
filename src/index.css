@@ -2,13 +2,13 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-bg-dark: #0a0a0f;
-  --color-bg-surface: #1a1a2e;
-  --color-crimson: #dc2626;
-  --color-gold: #f59e0b;
-  --color-fire: #ff6b35;
-  --color-text-primary: #f0e6d3;
-  --color-text-secondary: #a8a29e;
+  --color-bg-dark: #050508;
+  --color-bg-surface: rgba(18, 18, 24, 0.45);
+  --color-crimson: #ffffff;
+  --color-gold: #e2e8f0;
+  --color-fire: #d1d5db;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9ca3af;
   --font-bebas: 'Bebas Neue', sans-serif;
   --font-inter: 'Inter', sans-serif;
 }
@@ -24,7 +24,7 @@ body {
   font-family: var(--font-inter);
   overflow-x: hidden;
   scrollbar-width: thin;
-  scrollbar-color: #dc2626 #0a0a0f;
+  scrollbar-color: #555555 #050508;
 }
 
 ::-webkit-scrollbar {
@@ -32,21 +32,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0f;
+  background: #050508;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #dc2626;
+  background: #555555;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ef4444;
+  background: #888888;
 }
 
 ::selection {
-  background: #dc2626;
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
 }
 
 @keyframes spin {
@@ -60,12 +60,12 @@ body {
 
 @keyframes pulseGlow {
   0%, 100% {
-    opacity: 0.4;
+    opacity: 0.3;
     transform: scale(1);
   }
   50% {
-    opacity: 0.8;
-    transform: scale(1.08);
+    opacity: 0.7;
+    transform: scale(1.05);
   }
 }
 
@@ -95,22 +95,27 @@ body {
   animation: floatSlow 5s ease-in-out infinite;
 }
 
+/* 3D Glassmorphism Cards */
 .glass-card {
-  background: rgba(26, 26, 46, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(240, 230, 211, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: rgba(18, 18, 24, 0.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 
+              inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 
+              inset 0 -1px 2px 0 rgba(0, 0, 0, 0.8);
 }
 
 .glass-card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card-hover:hover {
-  transform: translateY(-4px);
-  border-color: rgba(220, 38, 38, 0.4);
-  box-shadow: 0 12px 40px 0 rgba(220, 38, 38, 0.15);
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 
+              0 0 30px rgba(255, 255, 255, 0.12),
+              inset 0 1px 2px 0 rgba(255, 255, 255, 0.4);
 }
 
 @layer utilities {
@@ -163,7 +168,7 @@ body {
 @layer components {
   .hero-container {
     position: relative;
-    background-color: var(--color-bg-dark);
+    background-color: transparent;
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
@@ -182,18 +187,20 @@ body {
   }
 
   .hero-title {
-    color: var(--color-crimson);
+    color: #ffffff;
     font-family: var(--font-bebas);
     text-transform: uppercase;
   }
 
   .hero-text-scroll {
     transform: rotate(-12deg);
-    border: 1px solid var(--color-crimson);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
   .hero-subtitle {
-    background-color: var(--color-crimson);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .hero-description {
@@ -201,25 +208,29 @@ body {
   }
 
   .hero-button {
-    background-color: var(--color-crimson);
-    color: var(--color-text-primary);
+    background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+    color: #000000;
+    font-weight: 700;
     border-radius: 9999px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
   }
 
   .about-content {
-    background-color: var(--color-bg-surface);
+    background-color: transparent;
     color: var(--color-text-primary);
     min-height: 100dvh;
   }
 
   .about-text-scroll {
     transform: rotate(12deg);
-    background-color: var(--color-gold);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   .tracks-section {
     min-height: 100dvh;
-    background-color: var(--color-bg-dark);
+    background-color: transparent;
   }
 
   .tracks-text-scroll {
@@ -238,24 +249,26 @@ body {
 
   .prizes-section {
     min-height: 100dvh;
-    background-color: var(--color-bg-dark);
+    background-color: transparent;
     overflow: hidden;
   }
 
   .judges-section {
-    background-color: var(--color-bg-dark);
+    background-color: transparent;
   }
 
   .sponsors-section {
-    background-color: var(--color-bg-surface);
+    background-color: transparent;
   }
 
   .faq-section {
-    background-color: var(--color-bg-dark);
+    background-color: transparent;
   }
 
   .footer-section {
-    background-color: var(--color-bg-surface);
+    background-color: rgba(5, 5, 8, 0.7);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     overflow: hidden;
   }
 
