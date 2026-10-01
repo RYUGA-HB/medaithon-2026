@@ -121,7 +121,7 @@ const HeroSection = ({ onRegisterClick }) => {
   }
 
   return (
-    <section className="bg-transparent text-white relative overflow-hidden min-h-screen w-full flex items-center justify-center pt-28 sm:pt-32 lg:pt-36 pb-16">
+    <section className="bg-transparent text-white relative overflow-hidden min-h-screen w-full flex items-center justify-center pt-36 sm:pt-40 lg:pt-36 pb-28 sm:pb-32 lg:pb-16">
 
       {/* Background ParticleField */}
       <div className="absolute inset-0 z-0">
@@ -160,7 +160,7 @@ const HeroSection = ({ onRegisterClick }) => {
             <img
               src="/images/medi-dragon.png"
               alt="Medi Dragon"
-              className="hero-dragon-img w-44 sm:w-60 md:w-64 object-contain filter drop-shadow-[0_10px_25px_rgba(255,255,255,0.3)] transition-transform duration-500"
+              className="hero-dragon-img w-36 sm:w-52 md:w-64 object-contain filter drop-shadow-[0_10px_25px_rgba(255,255,255,0.3)] transition-transform duration-500"
             />
           </div>
 
@@ -252,24 +252,6 @@ const HeroSection = ({ onRegisterClick }) => {
         </div>
 
       </div>
-
-      {/* Floating Mobile Register CTA */}
-      <button
-        type="button"
-        onClick={(e) => {
-          e.preventDefault()
-          e.stopPropagation()
-          if (typeof onRegisterClick === 'function') onRegisterClick()
-        }}
-        className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[99] sm:hidden flex items-center gap-2 bg-white hover:bg-neutral-200 text-black px-6 py-2.5 rounded-full font-extrabold tracking-widest uppercase text-xs shadow-[0_4px_25px_rgba(255,255,255,0.5)] border-2 border-white cursor-pointer backdrop-blur-md"
-      >
-        <span className="relative flex h-2 w-2 shrink-0">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-black"></span>
-        </span>
-        <span>Register Now</span>
-        <span>→</span>
-      </button>
     </section>
   )
 }
