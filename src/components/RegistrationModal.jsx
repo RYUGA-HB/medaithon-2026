@@ -239,7 +239,25 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
     };
 
     try {
-      // Store in localStorage for frontend-only mode
+      // 1. Post registration payload to MongoDB serverless endpoint (/api/register)
+      try {
+        const apiResponse = await fetch('/api/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const resData = await apiResponse.json();
+        if (!apiResponse.ok || !resData.success) {
+          console.warn('MongoDB Registration API Notice:', resData?.error || 'Could not connect to MongoDB serverless function');
+        }
+      } catch (apiErr) {
+        console.warn('Network request to MongoDB API failed, proceeding with local fallback:', apiErr);
+      }
+
+      // 2. Backup in localStorage for redundancy
       const existing = JSON.parse(localStorage.getItem('medaithon_registrations') || '[]');
       existing.push(payload);
       localStorage.setItem('medaithon_registrations', JSON.stringify(existing));
