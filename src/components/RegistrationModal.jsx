@@ -186,10 +186,11 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
 
     const allParticipants = [formData.teamLeader, ...formData.teamMembers];
     const hasFemale = allParticipants.some(p => p && p.gender && p.gender.trim().toLowerCase() === 'female');
+    const hasMale = allParticipants.some(p => p && p.gender && p.gender.trim().toLowerCase() === 'male');
 
-    if (!hasFemale) {
+    if (!hasFemale || !hasMale) {
       setStatus('error');
-      setErrorMessage('Team must include at least one female member among your 3 registered engineering students.');
+      setErrorMessage('Gender Diversity Requirement: Your 3 registered engineering students must include at least 1 Male and 1 Female member. All 3 members cannot be all Male or all Female.');
       return;
     }
 
@@ -357,7 +358,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                     <p className="text-neutral-300 m-0 leading-relaxed">
                       • <strong>Only 3 Engineering Students:</strong> Register exactly 3 Engineering Students (1 Team Leader + 2 Team Members) online.<br />
                       • <strong>Medical & Nursing Allotment (On-Site):</strong> <strong>1 MBBS Student</strong> and <strong>1 Nursing Student</strong> will be provided to your team on-site by MEDAITHON organizers.<br />
-                      • <strong>Mandatory Female Member:</strong> At least 1 female member must be included among your 3 registered engineering students.
+                      • <strong>Gender Diversity Requirement:</strong> Must include at least <strong>1 Male</strong> and at least <strong>1 Female</strong> member (all 3 members cannot be all Male or all Female).
                     </p>
                   </div>
                 </div>
@@ -581,7 +582,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                     <p className="m-0 font-bold text-white">Registered Team Composition Rule</p>
                     <p className="m-0 leading-relaxed">
                       Exactly <strong>3 Engineering Students</strong> (1 Leader + 2 Members) are registered in this form.<br />
-                      <strong>1 MBBS Student</strong> and <strong>1 Nursing Student</strong> will be assigned to your team on-site by MEDAITHON organizers. At least 1 female member is mandatory among your 3 registered engineering students.
+                      <strong>Gender Diversity Rule:</strong> Must include at least <strong>1 Male</strong> and <strong>1 Female</strong> member (all 3 cannot be all Male or all Female). <strong>1 MBBS Student</strong> and <strong>1 Nursing Student</strong> will be assigned to your team on-site by MEDAITHON organizers.
                     </p>
                   </div>
                 </div>
@@ -701,7 +702,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                   <label className="flex items-start gap-3 cursor-pointer">
                     <input required type="checkbox" checked={formData.declarationsAccepted} onChange={(e) => setFormData({ ...formData, declarationsAccepted: e.target.checked })} className="mt-1 w-4 h-4 accent-white" />
                     <span className="text-neutral-300 text-xs leading-relaxed">
-                      I confirm all information provided is accurate. Our team consists of 3 Engineering Students (including at least 1 female member), and we understand 1 MBBS student and 1 Nursing student will be provided to our team on-site by MEDAITHON organizers.
+                      I confirm all information provided is accurate. Our team consists of 3 Engineering Students (including at least 1 Male and 1 Female member; not all male or all female), and we understand 1 MBBS student and 1 Nursing student will be provided to our team on-site by MEDAITHON organizers.
                     </span>
                   </label>
                 </div>

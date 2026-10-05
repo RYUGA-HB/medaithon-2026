@@ -70,7 +70,7 @@ export const sponsors = {
 }
 
 export const faqs = [
-  { question: 'Who can participate in MEDAITHON\'26?', answer: 'Engineering students passionate about healthcare innovation. Teams must register exactly 3 Engineering Students online (1 Team Leader + 2 Team Members). On-site, 1 MBBS student and 1 Nursing student will be assigned to each team by MEDAITHON organizers.' },
+  { question: 'Who can participate in MEDAITHON\'26?', answer: 'Engineering students passionate about healthcare innovation. Teams must register exactly 3 Engineering Students online (1 Team Leader + 2 Team Members) with at least 1 Male and 1 Female member (all members cannot be all male or all female). On-site, 1 MBBS student and 1 Nursing student will be assigned to each team by MEDAITHON organizers.' },
   { question: 'Do I need prior medical knowledge?', answer: 'Not at all! We welcome developers, designers, data scientists, and domain experts. Interdisciplinary teams tend to build the best solutions. We\'ll have mentors from both tech and medical backgrounds.' },
   { question: 'What should I bring?', answer: 'Your laptop, charger, and warrior spirit. We provide meals, snacks, WiFi, power strips, and sleeping arrangements. Hardware kits will be available for IoT/embedded projects.' },
   { question: 'Is there a registration fee?', answer: 'MEDAITHON\'26 is completely free to attend. Food, swag, and resources are on us. All we ask is your full 50-hour commitment.' },
