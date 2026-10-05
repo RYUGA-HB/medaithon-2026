@@ -105,27 +105,6 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
     });
   };
 
-  const addMember = () => {
-    if (formData.teamMembers.length < 4) {
-      setFormData(prev => ({
-        ...prev,
-        teamMembers: [
-          ...prev.teamMembers,
-          { fullName: '', age: '', gender: '', email: '', mobileNumber: '', institutionName: '', subInstitute: '', department: '', yearOfStudy: '', participantType: 'Other', studentId: '' }
-        ]
-      }));
-    }
-  };
-
-  const removeMember = (index) => {
-    if (formData.teamMembers.length > 2) {
-      setFormData(prev => ({
-        ...prev,
-        teamMembers: prev.teamMembers.filter((_, i) => i !== index)
-      }));
-    }
-  };
-
   const handleStep1Next = () => {
     if (!formData.teamName || !formData.teamName.trim()) {
       setErrorMessage('Please enter your team name.');
@@ -210,7 +189,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
 
     if (!hasFemale) {
       setStatus('error');
-      setErrorMessage('Team must include at least one female member.');
+      setErrorMessage('Team must include at least one female member among your 3 registered engineering students.');
       return;
     }
 
@@ -223,7 +202,8 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
         ...p,
         age: Number(p.age),
         institutionName: finalInstitution,
-        subInstitute: p.subInstitute || ''
+        subInstitute: p.subInstitute || '',
+        participantType: 'Engineering Student'
       };
     };
 
@@ -235,6 +215,10 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
       registrationId: generatedRegId,
       teamLeader: formatParticipant(formData.teamLeader),
       teamMembers: formData.teamMembers.map(formatParticipant),
+      onSiteProvidedMembers: [
+        { role: 'MBBS Student', providedBy: 'MEDAITHON Organizers (On-Site)' },
+        { role: 'Nursing Student', providedBy: 'MEDAITHON Organizers (On-Site)' }
+      ],
       submissionDate: new Date().toISOString()
     };
 
@@ -285,7 +269,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
   const STEPS = [
     { id: 1, name: 'Team & Abstract' },
     { id: 2, name: 'Team Leader' },
-    { id: 3, name: 'Team Members' },
+    { id: 3, name: 'Engineering Members (2)' },
     { id: 4, name: 'Submit' },
   ];
 
@@ -338,7 +322,10 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
               <span className="text-lg font-bold font-mono text-white tracking-wider">{registrationId}</span>
             </div>
             <p className="text-neutral-300 max-w-md mx-auto text-sm font-['Inter'] leading-relaxed">
-              Your team <strong>{lastSubmission?.teamName}</strong> has been registered for MEDAITHON 2026. Keep your Registration ID for future reference.
+              Your team <strong>{lastSubmission?.teamName}</strong> (3 Engineering Students) has been registered for MEDAITHON 2026.<br />
+              <span className="text-xs text-white/80 block mt-2 bg-white/5 p-2 rounded-lg border border-white/10">
+                🏥 <strong>1 MBBS Student</strong> and <strong>1 Nursing Student</strong> will be allocated to your team on-site by organizers.
+              </span>
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-4">
               <button onClick={downloadReceipt} type="button" className="inline-flex items-center gap-2 bg-white hover:bg-neutral-200 text-black font-bold px-6 py-3 rounded-full text-xs uppercase tracking-wider cursor-pointer shadow-[0_4px_15px_rgba(255,255,255,0.2)] transition-all">
@@ -358,6 +345,23 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
             {/* Step 1: Team & Abstract Details */}
             {activeStep === 1 && (
               <div className="space-y-6 animate-in fade-in duration-300">
+                {/* Team Composition Notice */}
+                <div className="bg-white/5 border border-white/20 rounded-2xl p-4 flex items-start gap-3 shadow-md">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <div className="space-y-1 text-xs">
+                    <h4 className="font-bold text-white text-sm m-0">Team Composition Rules</h4>
+                    <p className="text-neutral-300 m-0 leading-relaxed">
+                      • <strong>Only 3 Engineering Students:</strong> Register exactly 3 Engineering Students (1 Team Leader + 2 Team Members) online.<br />
+                      • <strong>Medical & Nursing Allotment (On-Site):</strong> <strong>1 MBBS Student</strong> and <strong>1 Nursing Student</strong> will be provided to your team on-site by MEDAITHON organizers.<br />
+                      • <strong>Mandatory Female Member:</strong> At least 1 female member must be included among your 3 registered engineering students.
+                    </p>
+                  </div>
+                </div>
+
                 {/* Abstract PPT Template Callout */}
                 <div className="bg-white/5 border border-white/15 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-md">
                   <div className="flex items-center gap-3">
@@ -462,7 +466,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
               <div className="space-y-4 animate-in fade-in duration-300">
                 <h3 className="text-lg font-bold text-white border-b border-white/10 pb-2 flex items-center gap-2">
                   <span>2.</span>
-                  <span>Team Leader Details</span>
+                  <span>Team Leader Details (Engineering Student)</span>
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -531,12 +535,13 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                     <input required name="cityState" placeholder="City / State" value={formData.teamLeader.cityState} onChange={handleLeaderChange} className="w-full bg-white/5 rounded-xl p-3 border border-white/10 focus:border-white outline-none" />
                   </div>
                   <div>
-                    <label className="block mb-1 text-xs text-neutral-400">Participant Type *</label>
-                    <select required name="participantType" value={formData.teamLeader.participantType} onChange={handleLeaderChange} className="w-full bg-[#121216] rounded-xl p-3 border border-white/10 text-white focus:border-white outline-none">
-                      <option value="Engineering Student">Engineering Student</option>
-                      <option value="Medical Student">Medical Student</option>
-                      <option value="Other">Other</option>
-                    </select>
+                    <label className="block mb-1 text-xs text-neutral-400 font-semibold">Participant Type *</label>
+                    <input 
+                      readOnly 
+                      name="participantType" 
+                      value="Engineering Student" 
+                      className="w-full bg-white/10 rounded-xl p-3 border border-white/20 text-white outline-none font-medium cursor-not-allowed" 
+                    />
                   </div>
                   <div>
                     <label className="block mb-1 text-xs text-neutral-400">Student ID (Optional)</label>
@@ -553,7 +558,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                     ← Back
                   </button>
                   <button type="button" onClick={handleStep2Next} className="bg-white hover:bg-neutral-200 text-black font-bold px-6 py-2.5 rounded-full text-xs uppercase tracking-wider cursor-pointer transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                    Next: Team Members →
+                    Next: Engineering Members →
                   </button>
                 </div>
               </div>
@@ -565,26 +570,27 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                 <div className="flex justify-between items-end border-b border-white/10 pb-2">
                   <h3 className="text-lg font-bold text-white flex items-center gap-2">
                     <span>3.</span>
-                    <span>Team Members ({formData.teamMembers.length} added)</span>
+                    <span>Engineering Team Members (2 Members)</span>
                   </h3>
-                  {formData.teamMembers.length < 4 && (
-                    <button type="button" onClick={addMember} className="bg-white/10 border border-white/20 text-xs px-3 py-1.5 rounded-lg hover:bg-white/20 text-white font-bold cursor-pointer">+ Add Member</button>
-                  )}
                 </div>
-                <p className="text-xs text-neutral-300 -mt-3 bg-white/5 p-3 rounded-xl border border-white/10 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-white/5 border border-white/20 p-4 rounded-2xl flex items-start gap-3 text-xs text-neutral-300">
+                  <svg className="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span><strong>Mandatory Rule:</strong> Teams must have 2 to 4 members. Ensure at least one female member is present across your total team roster.</span>
-                </p>
+                  <div className="space-y-1">
+                    <p className="m-0 font-bold text-white">Registered Team Composition Rule</p>
+                    <p className="m-0 leading-relaxed">
+                      Exactly <strong>3 Engineering Students</strong> (1 Leader + 2 Members) are registered in this form.<br />
+                      <strong>1 MBBS Student</strong> and <strong>1 Nursing Student</strong> will be assigned to your team on-site by MEDAITHON organizers. At least 1 female member is mandatory among your 3 registered engineering students.
+                    </p>
+                  </div>
+                </div>
 
                 {formData.teamMembers.map((member, index) => (
                   <div key={index} className="p-5 bg-white/5 rounded-2xl border border-white/10 space-y-4 relative">
                     <div className="flex justify-between items-center border-b border-white/10 pb-2">
-                      <h4 className="font-bold text-white">Member {index + 1}</h4>
-                      {formData.teamMembers.length > 2 && (
-                        <button type="button" onClick={() => removeMember(index)} className="text-red-400 text-xs hover:underline cursor-pointer">Remove Member</button>
-                      )}
+                      <h4 className="font-bold text-white">Engineering Member {index + 1}</h4>
+                      <span className="text-xs font-mono text-white/60">Registered Member {index + 2} of 3</span>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
@@ -648,12 +654,13 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                         <input required name="yearOfStudy" placeholder="Year of Study" value={member.yearOfStudy} onChange={(e) => handleMemberChange(index, e)} className="w-full bg-white/5 rounded-xl p-2.5 border border-white/10 focus:border-white outline-none" />
                       </div>
                       <div>
-                        <label className="block mb-1 text-xs text-neutral-400">Participant Type *</label>
-                        <select required name="participantType" value={member.participantType} onChange={(e) => handleMemberChange(index, e)} className="w-full bg-[#121216] rounded-xl p-2.5 border border-white/10 text-white focus:border-white outline-none">
-                          <option value="Engineering Student">Engineering Student</option>
-                          <option value="Medical Student">Medical Student</option>
-                          <option value="Other">Other</option>
-                        </select>
+                        <label className="block mb-1 text-xs text-neutral-400 font-semibold">Participant Type *</label>
+                        <input 
+                          readOnly 
+                          name="participantType" 
+                          value="Engineering Student" 
+                          className="w-full bg-white/10 rounded-xl p-2.5 border border-white/20 text-white outline-none font-medium cursor-not-allowed text-xs" 
+                        />
                       </div>
                     </div>
                   </div>
@@ -686,14 +693,15 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
                   <p><strong>Team:</strong> {formData.teamName || 'Not entered yet'}</p>
                   <p><strong>Problem:</strong> {formData.selectedProblemStatement}</p>
                   <p><strong>Abstract Link:</strong> {formData.abstractDriveLink || 'Not entered yet'}</p>
-                  <p><strong>Total Participants:</strong> {1 + formData.teamMembers.length} members</p>
+                  <p><strong>Online Registered Members:</strong> 3 Engineering Students (1 Leader + 2 Members)</p>
+                  <p><strong>On-Site Allotted Members:</strong> 1 MBBS Student + 1 Nursing Student (Provided by Organizers)</p>
                 </div>
 
                 <div className="space-y-4 bg-white/5 border border-white/15 p-4 rounded-2xl">
                   <label className="flex items-start gap-3 cursor-pointer">
                     <input required type="checkbox" checked={formData.declarationsAccepted} onChange={(e) => setFormData({ ...formData, declarationsAccepted: e.target.checked })} className="mt-1 w-4 h-4 accent-white" />
                     <span className="text-neutral-300 text-xs leading-relaxed">
-                      I confirm all information provided is accurate, each participant is registered in one team only, and our team adheres to the mandatory composition (at least 1 female member).
+                      I confirm all information provided is accurate. Our team consists of 3 Engineering Students (including at least 1 female member), and we understand 1 MBBS student and 1 Nursing student will be provided to our team on-site by MEDAITHON organizers.
                     </span>
                   </label>
                 </div>
