@@ -61,14 +61,20 @@ const CountdownTimer = () => {
   );
 
   return (
-    <div className="flex gap-2 sm:gap-4 justify-center items-center">
-      <TimeCard value={timeLeft.days} label="DAYS" />
-      <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
-      <TimeCard value={timeLeft.hours} label="HOURS" />
-      <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
-      <TimeCard value={timeLeft.minutes} label="MINS" />
-      <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
-      <TimeCard value={timeLeft.seconds} label="SECS" />
+    <div className="flex flex-col items-center gap-3">
+      <div className="flex gap-2 sm:gap-4 justify-center items-center">
+        <TimeCard value={timeLeft.days} label="DAYS" />
+        <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
+        <TimeCard value={timeLeft.hours} label="HOURS" />
+        <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
+        <TimeCard value={timeLeft.minutes} label="MINS" />
+        <span className="text-white font-bold text-xl sm:text-3xl opacity-80 animate-pulse -mt-2">:</span>
+        <TimeCard value={timeLeft.seconds} label="SECS" />
+      </div>
+      <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/15 text-[10px] sm:text-xs font-mono text-gray-300 tracking-wider shadow-sm">
+        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+        <span>OCTOBER 26, 27 & 28, 2026</span>
+      </div>
     </div>
   );
 };

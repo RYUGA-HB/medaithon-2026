@@ -155,7 +155,7 @@ const AboutSection = () => {
           <div className="flex justify-center mt-12 md:mt-16">
             <div className="max-w-3xl px-5 flex justify-center">
               <p className="about-para text-center leading-relaxed text-gray-300 text-lg md:text-xl font-inter">
-                MEDAITHON'26 is where medicine meets technology in an epic 50-hour battle of innovation. Assemble your team, choose your path, and build solutions that could save lives. Fueled by code, mentored by legends, judged by the council.
+                MEDAITHON'26 is where medicine meets technology in an epic 50-hour battle of innovation from October 26 to 28, 2026. Assemble your team, choose your path, and build solutions that could save lives. Fueled by code, mentored by legends, judged by the council.
               </p>
             </div>
           </div>

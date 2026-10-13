@@ -300,7 +300,7 @@ const TemplateSection = () => {
                   </div>
 
                   <div className="pt-3 border-t border-white/10 flex justify-between items-center text-[10px] font-mono text-gray-400">
-                    <span>MEDAITHON 2026 OFFICIAL DOSSIER</span>
+                    <span>MEDAITHON 2026 OFFICIAL DOSSIER • 26–28 OCT</span>
                     <span>CONFIDENTIAL • FOR JURY REVIEW ONLY</span>
                   </div>
                 </div>

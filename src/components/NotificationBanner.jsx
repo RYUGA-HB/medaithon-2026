@@ -30,9 +30,9 @@ const NotificationBanner = ({ visible = true, onClose }) => {
           {/* Responsive Text Message */}
           <div className="min-w-0 flex-1">
             <p className="m-0 text-gray-200 text-[11px] sm:text-xs leading-tight truncate sm:whitespace-normal font-medium">
-              <span className="sm:hidden text-white font-semibold">PPT Template v2.0 Released!</span>
+              <span className="sm:hidden text-white font-semibold">Oct 26–28, 2026 • PPT Template v2.0 Live!</span>
               <span className="hidden sm:inline">
-                <strong className="text-white font-semibold">MEDAITHON '26: </strong>
+                <strong className="text-white font-semibold">MEDAITHON '26 (26, 27 & 28 Oct 2026): </strong>
                 Official Solution Abstract Template <code className="bg-white/10 px-1.5 py-0.5 rounded text-white font-mono text-[10px] sm:text-[11px] border border-white/30">v2.0</code> & Rulebook are live!
               </span>
             </p>

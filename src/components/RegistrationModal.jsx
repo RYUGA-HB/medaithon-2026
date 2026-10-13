@@ -280,7 +280,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
         {/* Header Bar */}
         <div className="flex justify-between items-center pb-4 border-b border-white/10 mb-6">
           <div>
-            <span className="text-xs font-mono text-white/60 tracking-widest uppercase">● REGISTRATION FORM</span>
+            <span className="text-xs font-mono text-white/60 tracking-widest uppercase">● REGISTRATION FORM • OCT 26, 27 & 28, 2026</span>
             <h2 className="text-3xl font-['Bebas_Neue'] tracking-wide text-white m-0">MEDAITHON 2026 REGISTRATION</h2>
           </div>
           <button 
@@ -322,7 +322,7 @@ const RegistrationModal = ({ isOpen, onClose, prefilledProblem }) => {
               <span className="text-lg font-bold font-mono text-white tracking-wider">{registrationId}</span>
             </div>
             <p className="text-neutral-300 max-w-md mx-auto text-sm font-['Inter'] leading-relaxed">
-              Your team <strong>{lastSubmission?.teamName}</strong> (3 Registered Members) has been registered for MEDAITHON 2026.<br />
+              Your team <strong>{lastSubmission?.teamName}</strong> (3 Registered Members) has been registered for MEDAITHON 2026 (October 26–28, 2026).<br />
               <span className="text-xs text-white/80 block mt-2 bg-white/5 p-2 rounded-lg border border-white/10">
                 🏥 <strong>1 MBBS Student</strong> and <strong>1 Nursing Student</strong> will be allocated to your team on-site by organizers.
               </span>

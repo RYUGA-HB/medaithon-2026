@@ -142,7 +142,7 @@ const HeroSection = ({ onRegisterClick }) => {
           {/* Top Event Badge */}
           <div className="hero-badge mb-2 sm:mb-3 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/30 backdrop-blur-md text-white text-[9px] sm:text-xs font-mono font-semibold tracking-wider inline-flex items-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             <span className="w-2 h-2 rounded-full bg-white animate-ping shrink-0"></span>
-            <span className="truncate">医療AIハッカソン • 50-HOUR WARRIOR SPRINT</span>
+            <span className="truncate">医療AIハッカソン • 50-HOUR WARRIOR SPRINT • OCT 26, 27, 28, 2026</span>
           </div>
           
           {/* Main Logo Image (Preserve original vibrant logo color) */}

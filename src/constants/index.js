@@ -1,4 +1,5 @@
-export const EVENT_DATE = new Date('2026-10-24T12:00:00+05:30')
+export const EVENT_DATE = new Date('2026-10-26T12:00:00+05:30')
+export const EVENT_DATES_DISPLAY = '26, 27 & 28 October 2026'
 
 export const tracks = [
   { name: 'Hardware / IoT Track', icon: '⚙️', description: 'Build AI-powered solutions for diagnostics, drug discovery, and clinical decision support.', color: '#ffffff', gradient: 'from-zinc-800 via-zinc-900 to-black' },
@@ -9,18 +10,18 @@ export const tracks = [
 ]
 
 export const timelineData = [
-  { day: 'Day 1', time: '08:00 AM', title: 'Gates Open — Registration', description: 'Check in, grab your swag kit, and meet your fellow warriors.', type: 'milestone' },
-  { day: 'Day 1', time: '10:00 AM', title: 'Opening Ceremony', description: 'The dragon awakens. Keynote, track reveals, and rules of engagement.', type: 'ceremony' },
-  { day: 'Day 1', time: '11:00 AM', title: 'Hacking Begins ⚔️', description: 'Forge your teams. Choose your path. Let the code flow.', type: 'action' },
-  { day: 'Day 1', time: '08:00 PM', title: 'Mentor Round 1', description: 'Industry experts roam the halls — seek their wisdom.', type: 'support' },
-  { day: 'Day 2', time: '02:00 AM', title: 'Midnight Fuel 🍜', description: 'Ramen station opens. The dragon feeds its warriors.', type: 'food' },
-  { day: 'Day 2', time: '10:00 AM', title: 'Workshop: AI in Medicine', description: 'Deep-dive session on deploying ML models in clinical settings.', type: 'workshop' },
-  { day: 'Day 2', time: '04:00 PM', title: 'Midpoint Check-in', description: 'Progress presentations. Get feedback. Pivot if needed.', type: 'milestone' },
-  { day: 'Day 2', time: '09:00 PM', title: 'Night Owl Sessions', description: 'Special lightning talks and energy booster activities.', type: 'support' },
-  { day: 'Day 3', time: '09:00 AM', title: 'Final Sprint 🏁', description: 'Last 4 hours. Polish, debug, and prepare your pitch.', type: 'action' },
-  { day: 'Day 3', time: '01:00 PM', title: 'Submissions Close', description: 'Pencils down. Upload your project. Breathe.', type: 'milestone' },
-  { day: 'Day 3', time: '02:00 PM', title: 'Demo & Judging', description: 'Present your creation to the council of judges.', type: 'ceremony' },
-  { day: 'Day 3', time: '05:00 PM', title: 'Awards Ceremony 🏆', description: 'The dragon crowns its champions. Prizes, glory, and celebration.', type: 'ceremony' },
+  { day: 'Day 1 (26 Oct)', time: '08:00 AM', title: 'Gates Open — Registration', description: 'Check in, grab your swag kit, and meet your fellow warriors.', type: 'milestone' },
+  { day: 'Day 1 (26 Oct)', time: '10:00 AM', title: 'Opening Ceremony', description: 'The dragon awakens. Keynote, track reveals, and rules of engagement.', type: 'ceremony' },
+  { day: 'Day 1 (26 Oct)', time: '11:00 AM', title: 'Hacking Begins ⚔️', description: 'Forge your teams. Choose your path. Let the code flow.', type: 'action' },
+  { day: 'Day 1 (26 Oct)', time: '08:00 PM', title: 'Mentor Round 1', description: 'Industry experts roam the halls — seek their wisdom.', type: 'support' },
+  { day: 'Day 2 (27 Oct)', time: '02:00 AM', title: 'Midnight Fuel 🍜', description: 'Ramen station opens. The dragon feeds its warriors.', type: 'food' },
+  { day: 'Day 2 (27 Oct)', time: '10:00 AM', title: 'Workshop: AI in Medicine', description: 'Deep-dive session on deploying ML models in clinical settings.', type: 'workshop' },
+  { day: 'Day 2 (27 Oct)', time: '04:00 PM', title: 'Midpoint Check-in', description: 'Progress presentations. Get feedback. Pivot if needed.', type: 'milestone' },
+  { day: 'Day 2 (27 Oct)', time: '09:00 PM', title: 'Night Owl Sessions', description: 'Special lightning talks and energy booster activities.', type: 'support' },
+  { day: 'Day 3 (28 Oct)', time: '09:00 AM', title: 'Final Sprint 🏁', description: 'Last 4 hours. Polish, debug, and prepare your pitch.', type: 'action' },
+  { day: 'Day 3 (28 Oct)', time: '01:00 PM', title: 'Submissions Close', description: 'Pencils down. Upload your project. Breathe.', type: 'milestone' },
+  { day: 'Day 3 (28 Oct)', time: '02:00 PM', title: 'Demo & Judging', description: 'Present your creation to the council of judges.', type: 'ceremony' },
+  { day: 'Day 3 (28 Oct)', time: '05:00 PM', title: 'Awards Ceremony 🏆', description: 'The dragon crowns its champions. Prizes, glory, and celebration.', type: 'ceremony' },
 ]
 
 export const judges = [
@@ -70,6 +71,7 @@ export const sponsors = {
 }
 
 export const faqs = [
+  { question: 'When is MEDAITHON\'26 taking place?', answer: 'MEDAITHON\'26 will be held on 26, 27, and 28 October 2026 — an intense 50-hour sprint where engineering and healthcare meet to forge innovative medical solutions.' },
   { question: 'Who can participate in MEDAITHON\'26?', answer: 'Engineering students passionate about healthcare innovation. Teams must register exactly 3 Engineering Students online (1 Team Leader + 2 Team Members). On-site, 1 MBBS student and 1 Nursing student will be assigned to each team by MEDAITHON organizers.' },
   { question: 'Do I need prior medical knowledge?', answer: 'Not at all! We welcome developers, designers, data scientists, and domain experts. Interdisciplinary teams tend to build the best solutions. We\'ll have mentors from both tech and medical backgrounds.' },
   { question: 'What should I bring?', answer: 'Your laptop, charger, and warrior spirit. We provide meals, snacks, WiFi, power strips, and sleeping arrangements. Hardware kits will be available for IoT/embedded projects.' },
