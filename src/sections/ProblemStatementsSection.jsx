@@ -206,10 +206,10 @@ const ProblemStatementsSection = ({ onRegisterClick }) => {
                           <button
                             type="button"
                             onClick={() => onRegisterClick && onRegisterClick(ps)}
-                            className="bg-white hover:bg-gray-200 text-black text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-full shadow-[0_4px_15px_rgba(255,255,255,0.3)] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer border border-white"
+                            className="bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full transition-all flex items-center gap-2 cursor-pointer shadow-sm hover:scale-105 active:scale-95"
                           >
-                            <span>Register with {ps.id}</span>
-                            <span>→</span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                            <span>Registrations Closed</span>
                           </button>
 
                           <button

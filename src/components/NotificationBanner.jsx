@@ -18,22 +18,22 @@ const NotificationBanner = ({ visible = true, onClose }) => {
           
           {/* Glowing Status Pulse */}
           <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-80"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-white shadow-[0_0_8px_#ffffff]"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-80"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400 shadow-[0_0_8px_#fbbf24]"></span>
           </span>
 
           {/* Badge */}
-          <span className="bg-white/15 text-white border border-white/40 px-1.5 sm:px-2.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold font-['Bebas_Neue'] tracking-wider shrink-0 uppercase shadow-[0_0_10px_rgba(255,255,255,0.2)]">
-            NEW V2
+          <span className="bg-amber-400/20 text-amber-300 border border-amber-400/50 px-2 sm:px-2.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold font-['Bebas_Neue'] tracking-wider shrink-0 uppercase shadow-[0_0_10px_rgba(251,191,36,0.25)]">
+            REGISTRATIONS CLOSED
           </span>
 
           {/* Responsive Text Message */}
           <div className="min-w-0 flex-1">
             <p className="m-0 text-gray-200 text-[11px] sm:text-xs leading-tight truncate sm:whitespace-normal font-medium">
-              <span className="sm:hidden text-white font-semibold">Oct 26–28, 2026 • PPT Template v2.0 Live!</span>
+              <span className="sm:hidden text-white font-semibold">Registrations Closed • Results will be announced soon!</span>
               <span className="hidden sm:inline">
                 <strong className="text-white font-semibold">MEDAITHON '26 (26, 27 & 28 Oct 2026): </strong>
-                Official Solution Abstract Template <code className="bg-white/10 px-1.5 py-0.5 rounded text-white font-mono text-[10px] sm:text-[11px] border border-white/30">v2.0</code> & Rulebook are live!
+                Online registrations are now closed! Reviews in progress — <span className="text-amber-300 font-semibold">Results will be announced soon.</span>
               </span>
             </p>
           </div>

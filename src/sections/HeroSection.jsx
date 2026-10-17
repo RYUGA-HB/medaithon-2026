@@ -101,7 +101,7 @@ const HeroSection = ({ onRegisterClick }) => {
 
     // CTA button continual glow pulse
     gsap.to(buttonRef.current, {
-      boxShadow: '0 0 35px 8px rgba(255, 255, 255, 0.5)',
+      boxShadow: '0 0 35px 8px rgba(251, 191, 36, 0.45)',
       duration: 1.8,
       repeat: -1,
       yoyo: true,
@@ -166,6 +166,10 @@ const HeroSection = ({ onRegisterClick }) => {
 
           {/* Interactive Feature Pills */}
           <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 mb-3 sm:mb-4 max-w-lg sm:max-w-2xl w-full">
+            <div className="hero-pill-badge px-3 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 backdrop-blur-md text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+              <span>REGISTRATIONS CLOSED</span>
+            </div>
             <div className="hero-pill-badge px-3 py-1.5 rounded-full bg-white/10 border border-white/20 hover:border-white/50 hover:bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold text-white flex items-center justify-center gap-1.5 transition-all shadow-sm">
               <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
               <span>50 Hours</span>
@@ -189,9 +193,9 @@ const HeroSection = ({ onRegisterClick }) => {
             <CountdownTimer />
           </div>
 
-          {/* Action CTAs - Prominent Register Now CTA directly below Countdown Timer */}
+          {/* Action CTAs - Results Will Be Announced Soon directly below Countdown Timer */}
           <div className="relative z-50 flex flex-col sm:flex-row flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full mt-2 pointer-events-auto">
-            {/* Primary Register Now Button */}
+            {/* Primary Status Button - Results Will Be Announced Soon */}
             <button
               ref={buttonRef}
               type="button"
@@ -200,14 +204,14 @@ const HeroSection = ({ onRegisterClick }) => {
                 e.stopPropagation()
                 if (typeof onRegisterClick === 'function') onRegisterClick()
               }}
-              className="hero-button group relative cursor-pointer bg-white hover:bg-neutral-200 text-black px-8 py-3.5 rounded-full font-extrabold tracking-widest uppercase text-xs sm:text-sm font-inter transition-all duration-300 shadow-[0_4px_30px_rgba(255,255,255,0.6)] hover:shadow-[0_4px_40px_rgba(255,255,255,0.9)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 border-2 border-white w-full sm:w-auto shrink-0 z-50"
+              className="hero-button group relative cursor-pointer bg-gradient-to-r from-amber-500/25 via-white/10 to-amber-500/25 hover:from-amber-500/35 hover:to-amber-500/35 text-white px-8 py-3.5 rounded-full font-extrabold tracking-widest uppercase text-xs sm:text-sm font-inter transition-all duration-300 shadow-[0_4px_30px_rgba(251,191,36,0.35)] hover:shadow-[0_4px_40px_rgba(251,191,36,0.55)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2.5 border-2 border-amber-400/80 hover:border-amber-400 w-full sm:w-auto shrink-0 z-50 backdrop-blur-xl"
             >
               <span className="relative flex h-2.5 w-2.5 shrink-0 pointer-events-none">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-black"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-400 shadow-[0_0_8px_#fbbf24]"></span>
               </span>
-              <span className="pointer-events-none whitespace-nowrap text-black font-extrabold">Register Now</span>
-              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 shrink-0 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+              <span className="pointer-events-none whitespace-nowrap text-white font-extrabold">Results Will Be Announced Soon</span>
+              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 shrink-0 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
             </button>

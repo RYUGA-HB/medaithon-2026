@@ -41,27 +41,9 @@ export default async function handler(req, res) {
     const collection = db.collection('registrations')
 
     if (req.method === 'POST') {
-      const payload = typeof req.body === 'string' ? JSON.parse(req.body) : req.body
-
-      if (!payload || !payload.teamName || !payload.abstractDriveLink) {
-        return res.status(400).json({
-          success: false,
-          error: 'Missing required team registration details.'
-        })
-      }
-
-      const documentToInsert = {
-        ...payload,
-        createdAt: new Date()
-      }
-
-      const result = await collection.insertOne(documentToInsert)
-
-      return res.status(200).json({
-        success: true,
-        message: 'Registration successfully stored in MongoDB.',
-        registrationId: payload.registrationId,
-        insertedId: result.insertedId
+      return res.status(403).json({
+        success: false,
+        error: 'Registrations are now closed. Results will be announced soon.'
       })
     }
 

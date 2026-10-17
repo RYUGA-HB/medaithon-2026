@@ -71,6 +71,7 @@ export const sponsors = {
 }
 
 export const faqs = [
+  { question: 'Are registrations still open?', answer: 'Online registrations are now officially closed. Our evaluation panel is reviewing all submitted abstracts. Shortlisted teams and results will be announced soon!' },
   { question: 'When is MEDAITHON\'26 taking place?', answer: 'MEDAITHON\'26 will be held on 26, 27, and 28 October 2026 — an intense 50-hour sprint where engineering and healthcare meet to forge innovative medical solutions.' },
   { question: 'Who can participate in MEDAITHON\'26?', answer: 'Engineering students passionate about healthcare innovation. Teams must register exactly 3 Engineering Students online (1 Team Leader + 2 Team Members). On-site, 1 MBBS student and 1 Nursing student will be assigned to each team by MEDAITHON organizers.' },
   { question: 'Do I need prior medical knowledge?', answer: 'Not at all! We welcome developers, designers, data scientists, and domain experts. Interdisciplinary teams tend to build the best solutions. We\'ll have mentors from both tech and medical backgrounds.' },

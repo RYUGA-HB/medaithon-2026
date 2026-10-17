@@ -68,7 +68,7 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
       duration: 0.4,
       ease: 'power3.out',
     })
-    
+
     gsap.to(pillRef.current, {
       opacity: scrolled ? 1 : 0.85,
       scale: scrolled ? 1 : 1.01,
@@ -146,8 +146,8 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
         }}
       >
         {/* Frosted Glass Backdrop Pill */}
-        <div 
-          ref={pillRef} 
+        <div
+          ref={pillRef}
           className="absolute inset-0 mx-3 md:mx-8 rounded-full bg-black/80 backdrop-blur-2xl border border-white/25 shadow-[0_12px_45px_rgba(0,0,0,0.85)] pointer-events-none"
         >
           {/* Subtle glowing chrome accent line */}
@@ -203,20 +203,16 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
             </a>
             <button
               onClick={onRegisterClick}
-              className="hidden lg:flex relative overflow-hidden items-center gap-2 bg-white hover:bg-gray-200 text-black text-[10px] font-bold tracking-[0.2em] uppercase px-7 py-3 rounded-full shadow-[0_4px_20px_rgba(255,255,255,0.3)] transition-all cursor-pointer"
+              className="hidden lg:flex relative overflow-hidden items-center gap-2 bg-gradient-to-r from-amber-500/20 via-white/10 to-amber-500/20 hover:from-amber-500/30 hover:to-amber-500/30 text-white text-[10px] font-bold tracking-[0.18em] uppercase px-6 py-3 rounded-full border border-amber-400/60 hover:border-amber-400 shadow-[0_2px_15px_rgba(251,191,36,0.25)] transition-all cursor-pointer backdrop-blur-md"
               onMouseMove={onCtaMove}
               onMouseLeave={onCtaLeave}
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              <span className="relative z-10">Register Now</span>
-              <svg
-                className="relative z-10 w-3 h-3 text-black"
-                viewBox="0 0 12 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+              </span>
+              <span className="relative z-10 text-white font-extrabold">Results will be announced soon</span>
             </button>
           </div>
 
@@ -280,14 +276,15 @@ const Navbar = ({ onRegisterClick, hasBanner = false }) => {
               Download Rulebook
             </a>
             <button
-              className="inline-block bg-white text-black text-sm font-bold tracking-widest uppercase px-8 py-4 rounded-full cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500/20 via-white/10 to-amber-500/20 border border-amber-400/50 text-white text-xs font-bold tracking-widest uppercase px-8 py-4 rounded-full cursor-pointer"
               onClick={() => {
                 setMenuOpen(false);
                 onRegisterClick();
               }}
               style={{ fontFamily: "'Inter', sans-serif" }}
             >
-              Register Now →
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              <span>Results Will Be Announced Soon</span>
             </button>
           </li>
         </ul>

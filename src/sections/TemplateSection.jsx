@@ -221,7 +221,7 @@ const TemplateSection = () => {
             SOLUTION ABSTRACT TEMPLATE V2.0
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base mt-4 font-['Inter'] leading-relaxed">
-            All participating teams MUST prepare their 4-slide solution abstract using the official PPT template before uploading to Google Drive for registration.
+            All participating teams must prepare their 4-slide solution abstract using the official PPT template. Online registrations are now closed and evaluations are underway.
           </p>
         </div>
 
@@ -359,7 +359,7 @@ const TemplateSection = () => {
                   DOWNLOAD DECK V2.0
                 </h3>
                 <p className="text-xs md:text-sm text-gray-300 font-['Inter'] mt-2 leading-relaxed">
-                  Download the updated template v2.0, fill in your project details following the 4-slide structure, and paste your Google Drive link into the registration form.
+                  Download the updated template v2.0 and follow the 4-slide structure for project evaluation and shortlisted presentations.
                 </p>
               </div>
 

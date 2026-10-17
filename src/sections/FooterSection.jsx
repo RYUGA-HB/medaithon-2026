@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText)
 
 const NAV_LINKS = [
   { heading: 'Event', items: ['About', 'Tracks', 'Template'] },
-  { heading: 'Participate', items: ['Register', 'Solution Template', 'Rules', 'Code of Conduct'] },
+  { heading: 'Participate', items: ['Results will be announced soon', 'Solution Template', 'Rules', 'Code of Conduct'] },
 ]
 
 const FooterSection = ({ onRegisterClick }) => {
@@ -31,6 +31,8 @@ const FooterSection = ({ onRegisterClick }) => {
       case 'Solution Template':
         document.getElementById('template')?.scrollIntoView({ behavior: 'smooth' })
         break
+      case 'Results will be announced soon':
+      case 'Results':
       case 'Register':
         if (onRegisterClick) onRegisterClick()
         break
@@ -192,7 +194,7 @@ const FooterSection = ({ onRegisterClick }) => {
           {/* Newsletter */}
           <div className="footer-newsletter md:max-w-lg w-full">
             <p className="text-sm md:text-base leading-relaxed opacity-80 mb-6 text-gray-300">
-              Get notified about MEDAITHON'26 updates, speaker announcements, and early bird registration.
+              Get notified about MEDAITHON'26 results, shortlisted teams, and event schedule.
             </p>
 
             {/* Input row */}
